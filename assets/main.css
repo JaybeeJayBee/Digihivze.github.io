@@ -138,7 +138,8 @@ a:hover {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(107, 66, 38, 0.98); 
+    /* Darker overlay for high contrast */
+    background-color: var(--color-primary-dark); 
     z-index: 1000;
     display: flex;
     flex-direction: column;
@@ -147,7 +148,7 @@ a:hover {
 
     /* Initial Hidden State (Slide Animation) */
     transform: translateX(100%);
-    transition: transform 0.5s ease-in-out;
+    transition: transform 0.5s cubic-bezier(0.77, 0, 0.175, 1); /* Slicker transition */
 }
 
 .nav-overlay.open {
@@ -159,17 +160,18 @@ a:hover {
     position: absolute;
     top: 20px;
     right: 40px;
-    font-size: 3rem;
+    font-size: 3rem; /* Slightly reduced X size */
     background: none;
     border: none;
-    color: var(--color-accent-cream);
+    color: var(--color-secondary-light); /* Accent color for the X */
     cursor: pointer;
     opacity: 1;
-    transition: opacity 0.3s;
+    transition: transform 0.3s, opacity 0.3s;
 }
 
 .close-btn:hover {
-    opacity: 0.7;
+    color: var(--color-accent-cream);
+    transform: rotate(90deg); /* Subtle wow effect on hover */
 }
 
 /* Menu Links */
@@ -180,29 +182,50 @@ a:hover {
 }
 
 .overlay-menu li {
-    margin: 1.5rem 0;
+    margin: 0.8rem 0; /* Significantly reduced vertical spacing */
 }
 
 .overlay-menu a {
     color: var(--color-text-light);
-    font-size: 2.5rem;
-    font-weight: 300;
+    font-size: 1.8rem; /* Dramatically reduced font size (Wowing, yet perfectly readable) */
+    font-weight: 700; 
     display: inline-block;
     padding: 0.5rem 0;
-    letter-spacing: 2px;
-    transition: color 0.3s, border-bottom 0.3s;
+    letter-spacing: 2px; /* Reduced spacing */
+    text-transform: uppercase;
+    position: relative;
+    transition: color 0.3s;
+    line-height: 1.2; /* Ensures text is not cut off vertically */
+}
+
+/* --- WOW EFFECT: Underline/Glow Hover --- */
+.overlay-menu a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0; 
+    height: 2px; /* Slightly thinner underline */
+    background: var(--color-secondary-light);
+    transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1); 
+    transform: translateX(-50%);
 }
 
 .overlay-menu a:hover {
     color: var(--color-secondary-light);
-    border-bottom: 2px solid var(--color-secondary-light);
+    text-shadow: 0 0 4px var(--color-secondary-light); /* Subtle glow */
+}
+
+.overlay-menu a:hover::after {
+    width: 100%; 
 }
 
 .overlay-tagline {
-    margin-top: 3rem;
+    margin-top: 2.5rem; /* Reduced margin */
     color: var(--color-secondary-light);
     font-style: italic;
-    font-size: 1.1rem;
+    font-size: 1rem; /* Slightly smaller tagline */
+    opacity: 0.7;
 }
 
 

@@ -7,7 +7,7 @@
     --color-text-light: #fff;
     --nav-icon-size: 50px;
     --spacing-lg: 3rem;
-    --color-steam-visible: rgba(255, 255, 255, 0.15); /* Increased visibility for steam */
+    --color-simmering-bubble: rgba(255, 255, 255, 0.25); /* Light, visible white/cream */
 }
 
 /* --- CRITICAL GLOBAL RESET (Fixes bottom spacing) --- */
@@ -195,30 +195,27 @@ a:hover {
     letter-spacing: 2px; /* Reduced spacing */
     text-transform: uppercase;
     position: relative;
-    transition: color 0.3s;
-    line-height: 1.2; /* Ensures text is not cut off vertically */
+    transition: color 0.3s, text-shadow 0.3s; /* Include text-shadow transition */
+    line-height: 1.2; 
 }
 
-/* --- WOW EFFECT: Underline/Glow Hover --- */
+/* --- FIX 2: REMOVE UNDERLINE AND USE PURE GLOW ON HOVER/ACTIVE --- */
+
+/* Remove the underline element entirely */
 .overlay-menu a::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    width: 0; 
-    height: 2px; /* Slightly thinner underline */
-    background: var(--color-secondary-light);
-    transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1); 
-    transform: translateX(-50%);
+    display: none; /* Hides the underline element */
 }
 
-.overlay-menu a:hover {
+.overlay-menu a:hover,
+.overlay-menu a[href="index.html"] { /* Target the active/current link */
     color: var(--color-secondary-light);
-    text-shadow: 0 0 4px var(--color-secondary-light); /* Subtle glow */
+    /* Pure glow effect, replaces the underline visually */
+    text-shadow: 0 0 10px var(--color-secondary-light); 
 }
 
+/* Remove hover effect from the underline element (just to be safe) */
 .overlay-menu a:hover::after {
-    width: 100%; 
+    width: 0; 
 }
 
 .overlay-tagline {
@@ -229,7 +226,7 @@ a:hover {
     opacity: 0.7;
 }
 
-/* --- WOW EFFECT: THEME BACKGROUND (VISIBLE STEAM/SMOKE) --- */
+/* --- FIX 1: THE "SIMMERING POT" BUBBLES ANIMATION --- */
 
 .steam-background {
     position: absolute;
@@ -246,81 +243,55 @@ a:hover {
     position: absolute;
     display: block;
     list-style: none;
-    /* Use circular shape for smoke/steam */
+    /* Perfect Circles for Bubbles */
     border-radius: 50%; 
-    /* Use the more visible steam color */
-    background: var(--color-steam-visible); 
+    /* Light/White color like effervescence */
+    background: var(--color-simmering-bubble); 
     bottom: -150px;
-    animation: animateSteam 35s linear infinite; /* Increased duration for smoother rise */
+    animation: animateSimmer 30s linear infinite; /* Smoother, slower animation */
     opacity: 0;
-    filter: blur(2px); /* Increased blur for soft, gaseous look */
-    /* Remove rotation for a pure upward smoke effect */
+    /* Apply Blur Filter */
+    filter: blur(2px); 
+    /* Ensure the bubbles don't rotate */
 }
 
-/* Define staggered animation delays and sizes for a natural look */
+/* Define staggered animation delays and sizes */
 .steam-background div:nth-child(1) {
-    left: 25%;
-    width: 80px;
-    height: 80px;
-    animation-delay: 0s;
+    left: 20%; width: 50px; height: 50px; animation-delay: 0s;
 }
 .steam-background div:nth-child(2) {
-    left: 10%;
-    width: 30px;
-    height: 30px;
-    animation-delay: 2s;
-    animation-duration: 25s;
+    left: 80%; width: 25px; height: 25px; animation-delay: 4s; animation-duration: 15s;
 }
 .steam-background div:nth-child(3) {
-    left: 70%;
-    width: 40px;
-    height: 40px;
-    animation-delay: 4s;
+    left: 55%; width: 70px; height: 70px; animation-delay: 8s; animation-duration: 40s;
 }
 .steam-background div:nth-child(4) {
-    left: 40%;
-    width: 100px;
-    height: 100px;
-    animation-delay: 0s;
-    animation-duration: 40s;
+    left: 30%; width: 35px; height: 35px; animation-delay: 1s; animation-duration: 20s;
 }
 .steam-background div:nth-child(5) {
-    left: 65%;
-    width: 25px;
-    height: 25px;
-    animation-delay: 0s;
+    left: 90%; width: 45px; height: 45px; animation-delay: 12s;
 }
 .steam-background div:nth-child(6) {
-    left: 75%;
-    width: 120px;
-    height: 120px;
-    animation-delay: 3s;
+    left: 45%; width: 90px; height: 90px; animation-delay: 6s; animation-duration: 50s;
 }
 .steam-background div:nth-child(7) {
-    left: 35%;
-    width: 150px;
-    height: 150px;
-    animation-delay: 7s;
+    left: 15%; width: 60px; height: 60px; animation-delay: 10s; animation-duration: 25s;
 }
 .steam-background div:nth-child(8) {
-    left: 50%;
-    width: 40px;
-    height: 40px;
-    animation-delay: 15s;
-    animation-duration: 50s;
+    left: 75%; width: 30px; height: 30px; animation-delay: 18s;
 }
 
-/* Keyframe definition for the rising steam effect (no rotation, only Y-axis rise) */
-@keyframes animateSteam {
+/* Keyframe definition for the rising simmer/bubble effect */
+@keyframes animateSimmer {
     0% {
         transform: translateY(0);
         opacity: 0;
     }
-    50% {
+    30% {
         opacity: 0.8; /* High opacity mid-rise for visibility */
     }
     100% {
-        transform: translateY(-1000px);
+        transform: translateY(-100vh); /* Rise up the whole viewport */
         opacity: 0; /* Fade out at the top */
     }
 }

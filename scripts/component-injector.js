@@ -2,6 +2,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const navPlaceholder = document.getElementById('nav-system-placeholder');
     const footerPlaceholder = document.getElementById('footer-placeholder');
 
+    // Function to run the copyright script after the footer is loaded
+    function setupFooter() {
+        const currentYear = new Date().getFullYear();
+        // Target the ID used in the new footer HTML
+        const copyrightElement = document.getElementById('copyright-notice'); 
+        if (copyrightElement) {
+             copyrightElement.textContent = `© ${currentYear} Digihivze. All Rights Reserved.`;
+        }
+    }
+
     // Function to inject component HTML from a source file
     const injectComponent = (placeholder, sourceFile) => {
         fetch(`components/${sourceFile}`)
@@ -12,7 +22,10 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(html => {
                 placeholder.innerHTML = html;
                 if (sourceFile === 'nav.html') {
-                    setupNavigation(); // Call setup function after injection
+                    setupNavigation(); // Setup Nav after injection
+                }
+                if (sourceFile === 'footer.html') {
+                    setupFooter(); // Setup Footer text after injection
                 }
             })
             .catch(error => console.error(`Could not load ${sourceFile}:`, error));
@@ -33,31 +46,28 @@ document.addEventListener('DOMContentLoaded', () => {
         // Open/Close Handlers
         floatingIcon.addEventListener('click', () => {
             navOverlay.classList.add('open');
-            floatingIcon.style.display = 'none'; // Disappear when menu opens
+            floatingIcon.style.display = 'none';
         });
 
         closeButton.addEventListener('click', () => {
-            // Simple Slide animation (controlled by CSS transform)
             navOverlay.classList.remove('open');
-            
-            // Reappear the icon after the menu slides out (0.5s transition in CSS)
             setTimeout(() => {
                 floatingIcon.style.display = 'flex'; 
             }, 500); 
         });
 
-        // Visibility Control (Disappear/Reappear on scroll direction) - CORRECTED LOGIC
+        // Visibility Control (Corrected Scroll Logic)
         let lastScrollTop = 0;
         window.addEventListener('scroll', () => {
             let scrollTop = window.scrollY || document.documentElement.scrollTop;
-            if (navOverlay.classList.contains('open')) return; // Do nothing if menu is open
+            if (navOverlay.classList.contains('open')) return;
 
             if (scrollTop > lastScrollTop) {
-                // Scrolling DOWN (content moves up) - ICON DISAPPEARS
+                // Scrolling DOWN - ICON DISAPPEARS
                 floatingIcon.classList.add('hidden');
             } 
             else if (scrollTop < lastScrollTop) {
-                // Scrolling UP (content moves down) - ICON REAPPEARS
+                // Scrolling UP - ICON REAPPEARS
                 floatingIcon.classList.remove('hidden');
             }
             lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; 

@@ -46,14 +46,3 @@
         <p id="copyright-notice"></p>
     </div>
 </footer>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const currentYear = new Date().getFullYear();
-        // NOTE: The ID is changed from 'current-year' to 'copyright-notice' to match the new HTML structure.
-        const copyrightElement = document.getElementById('copyright-notice'); 
-        if (copyrightElement) {
-             copyrightElement.textContent = `© ${currentYear} Digihivze. All Rights Reserved.`;
-        }
-    });
-</script>

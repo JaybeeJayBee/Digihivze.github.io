@@ -8,17 +8,20 @@
     --nav-icon-size: 50px;
     --spacing-lg: 3rem;
     --color-swirl-particle: rgba(212, 163, 115, 0.35); /* Swirl Color */
-    /* FIX: Adjusted pulse color to be darker and less disruptive */
     --color-pulse-darker: #5f3b20; 
-    --color-interaction-glow: #f8edeb; /* Used for the 'X' button glow */
+    --color-interaction-glow: #f8edeb; 
 }
 
-/* --- CRITICAL GLOBAL RESET (Fixes bottom spacing) --- */
+/* --- CRITICAL GLOBAL RESET (Fixes bottom spacing and horizontal overflow) --- */
+html {
+    /* CRITICAL FIX: Ensures the HTML container itself does not cause horizontal scroll */
+    overflow-x: hidden;
+}
+
 html, body {
     margin: 0;
     padding: 0;
     width: 100%;
-    overflow-x: hidden; 
 }
 
 * {
@@ -52,29 +55,39 @@ a:hover {
 /* --- MAIN Content Styling --- */
 #page-content {
     /* --- STICKY FOOTER SOLUTION: PART 2 --- */
-    flex-grow: 1; /* Pushes the footer to the bottom */
+    flex-grow: 1; 
     
-    padding: var(--spacing-lg) 5vw;
+    /* Adjusted padding to be consistent and constrain content */
+    padding: 0; 
     text-align: center;
 }
 
-/* These styles were part of the initial template and are overridden below by #home-hero */
+/* General Section Styling */
+.content-section {
+    padding: var(--spacing-lg) 5vw; /* Consistent padding across all main sections */
+    max-width: 1200px; /* Max width for content center */
+    margin: 0 auto;
+    text-align: left;
+}
+.content-section h2 {
+    color: var(--color-primary-dark);
+    margin-bottom: 1rem;
+    font-size: 2rem;
+    text-align: center;
+}
 .hero-section {
     padding: 6rem 0;
 }
-
 .agency-title {
     font-size: 3.5rem;
     color: var(--color-primary-dark);
     margin-bottom: 0.5rem;
 }
-
 .agency-tagline {
     font-size: 1.3rem;
     color: var(--color-secondary-light);
     margin-bottom: 2rem;
 }
-
 .cta-button {
     display: inline-block;
     padding: 0.8rem 2rem;
@@ -85,23 +98,9 @@ a:hover {
     letter-spacing: 1px;
     transition: background-color 0.3s ease;
 }
-
 .cta-button:hover {
     background-color: var(--color-secondary-light);
     color: var(--color-primary-dark);
-}
-
-.content-section {
-    padding: 4rem 0;
-    max-width: 900px;
-    margin: 0 auto;
-    text-align: left;
-}
-.content-section h2 {
-    color: var(--color-primary-dark);
-    margin-bottom: 1rem;
-    font-size: 2rem;
-    text-align: center;
 }
 
 
@@ -124,11 +123,9 @@ a:hover {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     transition: opacity 0.3s, transform 0.3s;
 }
-
 .chef-heart-icon {
     font-size: 1.5rem; 
 }
-
 /* Visibility Control: Hide/Show on Scroll Up/Down */
 #floating-nav-icon.hidden {
     opacity: 0;
@@ -149,30 +146,21 @@ a:hover {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-
-    /* Apply pulsing animation */
     animation: backgroundPulse 5s ease-in-out infinite alternate; 
-
-    /* Initial Hidden State (Slide Animation) */
     transform: translateX(100%);
-    transition: transform 0.5s cubic-bezier(0.77, 0, 0.175, 1); /* Slicker transition */
+    transition: transform 0.5s cubic-bezier(0.77, 0, 0.175, 1);
 }
-
-/* FIX: Keyframe for soft color pulsing - Reduced brightness at peak */
 @keyframes backgroundPulse {
     0% {
-        background-color: var(--color-primary-dark); /* Start: Dark Brown */
+        background-color: var(--color-primary-dark);
     }
     100% {
-        background-color: var(--color-pulse-darker); /* End: Less bright, maintains readability */
+        background-color: var(--color-pulse-darker);
     }
 }
-
 .nav-overlay.open {
     transform: translateX(0); 
 }
-
-/* Close Button (X) - NEW GLOW INTERACTION FIX */
 .close-btn {
     position: absolute;
     top: 20px;
@@ -183,31 +171,25 @@ a:hover {
     color: var(--color-secondary-light);
     cursor: pointer;
     opacity: 1;
-    transition: transform 0.3s, opacity 0.3s, color 0.1s, text-shadow 0.1s; /* Added transitions */
+    transition: transform 0.3s, opacity 0.3s, color 0.1s, text-shadow 0.1s;
 }
-
 .close-btn:hover {
     color: var(--color-accent-cream);
     transform: rotate(90deg);
 }
-/* Crucial Fix: Apply glow when button is clicked (active) */
 .close-btn:active {
     color: var(--color-accent-cream);
     text-shadow: 0 0 10px var(--color-interaction-glow); 
-    transform: rotate(90deg) scale(1.05); /* Adds a small press feedback */
+    transform: rotate(90deg) scale(1.05);
 }
-
-/* Menu Links */
 .overlay-menu ul {
     list-style: none;
     padding: 0;
     text-align: center;
 }
-
 .overlay-menu li {
-    margin: 0.8rem 0; /* Significantly reduced vertical spacing */
+    margin: 0.8rem 0;
 }
-
 .overlay-menu a {
     color: var(--color-text-light);
     font-size: 1.8rem; 
@@ -220,22 +202,17 @@ a:hover {
     transition: color 0.3s, text-shadow 0.3s; 
     line-height: 1.2; 
 }
-
-/* --- WOW EFFECT: Pure Glow Hover --- */
 .overlay-menu a::after {
     display: none; 
 }
-
 .overlay-menu a:hover,
 .overlay-menu a[href$="index.html"] { 
     color: var(--color-secondary-light);
     text-shadow: 0 0 10px var(--color-secondary-light); 
 }
-
 .overlay-menu a:hover::after {
     width: 0; 
 }
-
 .overlay-tagline {
     margin-top: 2.5rem; 
     color: var(--color-secondary-light);
@@ -243,9 +220,6 @@ a:hover {
     font-size: 1rem; 
     opacity: 0.7;
 }
-
-/* --- ANIMATION: SLOW-DRIFTING CHOCOLATE/COFFEE SWIRLS (Background component) --- */
-
 .steam-background {
     position: absolute;
     top: 0;
@@ -256,22 +230,17 @@ a:hover {
     overflow: hidden;
     pointer-events: none; 
 }
-
 .steam-background div {
     position: absolute;
     display: block;
     list-style: none;
-    /* Simple large circle shape */
     border-radius: 50%; 
-    /* Swirl Color */
     background: var(--color-swirl-particle); 
     bottom: -150px;
-    /* FIX: Increase speed of floating animation */
     animation: animateSwirl 35s linear infinite; 
     opacity: 0;
-    filter: blur(5px); /* INCREASED blur for a softer, liquid look */
+    filter: blur(5px); 
 }
-
 /* Define staggered animation delays and sizes */
 .steam-background div:nth-child(1) {
     left: 15%; width: 100px; height: 100px; animation-delay: 0s;
@@ -297,20 +266,17 @@ a:hover {
 .steam-background div:nth-child(8) {
     left: 95%; width: 70px; height: 70px; animation-delay: 20s;
 }
-
-/* Keyframe definition for the rising liquid swirl */
 @keyframes animateSwirl {
     0% {
         transform: translateY(0) translateX(0) rotate(0deg);
         opacity: 0;
     }
     30% {
-        opacity: 0.9; /* Fully visible mid-rise */
+        opacity: 0.9;
     }
     100% {
-        /* Rise, drift horizontally, and rotate very slowly */
         transform: translateY(-100vh) translateX(50px) rotate(360deg); 
-        opacity: 0; /* Fade out at the top */
+        opacity: 0;
     }
 }
 
@@ -322,22 +288,17 @@ a:hover {
     color: var(--color-text-light);
     padding: 40px 20px;
 }
-
-/* FIX: Using CSS Grid for robust column layout */
 .footer-content {
     display: grid;
-    /* Create 4 equal-width columns on desktop */
-    grid-template-columns: repeat(3, 1fr); /* Adjusted from 4 to 3 columns to match the HTML content */
+    grid-template-columns: repeat(3, 1fr);
     gap: 30px;
     max-width: 1200px;
     margin: 0 auto;
 }
-
 .footer-section {
     min-width: unset;
     text-align: left;
 }
-
 .footer-section h3 {
     color: var(--color-secondary-light);
     font-size: 1.1em;
@@ -346,7 +307,6 @@ a:hover {
     padding-bottom: 5px;
     font-weight: 600;
 }
-
 .footer-section h3::after {
     content: '';
     position: absolute;
@@ -356,7 +316,6 @@ a:hover {
     height: 2px;
     background-color: var(--color-secondary-light);
 }
-
 .footer-section p, .footer-section a, .footer-section ul li {
     color: var(--color-text-light);
     text-decoration: none;
@@ -364,21 +323,17 @@ a:hover {
     transition: color 0.3s ease;
     font-size: 1em;
 }
-
 .footer-section a:hover {
     color: var(--color-secondary-light);
 }
-
 .footer-section ul {
     list-style: none;
     padding: 0;
     margin: 0;
 }
-
 .footer-section ul li {
     margin-bottom: 8px;
 }
-
 .social-icons a {
     display: inline-flex;
     justify-content: center;
@@ -393,12 +348,10 @@ a:hover {
     transition: background-color 0.3s ease, color 0.3s ease;
     text-decoration: none;
 }
-
 .social-icons a:hover {
     background-color: var(--color-secondary-light);
     color: var(--color-primary-dark);
 }
-
 .footer-button {
     display: inline-block;
     background-color: var(--color-secondary-light);
@@ -413,17 +366,14 @@ a:hover {
     font-size: 0.9em;
     margin-top: 0;
 }
-
 .footer-button:hover {
     background-color: var(--color-accent-cream);
     color: var(--color-primary-dark);
 }
-
 .footer-bottom {
     display: flex;
     justify-content: center;
     align-items: center;
-    
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     text-align: center;
     padding-top: 1rem;
@@ -431,39 +381,30 @@ a:hover {
     font-size: 0.85rem;
 }
 
-/* --- Responsiveness (Updated for Grid) --- */
+/* --- Responsiveness (Footer) --- */
 @media (max-width: 768px) {
-    /* Switch to 2 columns on tablet/mid-screens */
     .footer-content {
         grid-template-columns: repeat(2, 1fr);
     }
-    
     .footer-section {
-        /* Center content when there are only two columns */
         text-align: center;
     }
-
     .footer-section h3::after {
         left: 50%;
         transform: translateX(-50%);
     }
 }
-
 @media (max-width: 480px) {
-    /* Switch to a single, centered column on mobile */
     .footer-content {
         grid-template-columns: 1fr;
     }
-    
     .footer-section {
         text-align: center;
     }
-
     .footer-section h3::after {
         left: 50%;
         transform: translateX(-50%);
     }
-
     .social-icons {
         justify-content: center;
     }
@@ -478,7 +419,6 @@ a:hover {
     margin-bottom: 0.5rem;
     font-weight: 700;
 }
-
 .section-subtitle {
     font-size: 1.15rem;
     color: var(--color-text-dark);
@@ -487,10 +427,8 @@ a:hover {
     font-style: italic;
 }
 
-
 /* HERO/HEADER SECTION - Custom overrides for the new design */
 #home-hero {
-    /* Ensures a tall, impactful header */
     min-height: 70vh; 
     display: flex;
     flex-direction: column;
@@ -500,28 +438,23 @@ a:hover {
     background-color: var(--color-secondary-light);
     color: var(--color-primary-dark);
 }
-
-/* Overrides the general .agency-title for the wow effect */
 .hero-section .agency-title {
-    font-size: 4.5rem; /* Larger than default */
+    font-size: 4.5rem;
     font-weight: 900;
     color: var(--color-primary-dark);
     text-shadow: 2px 2px 0px var(--color-accent-cream);
 }
-
 .hero-section .agency-tagline {
     font-size: 1.5rem;
     color: var(--color-primary-dark);
     margin-bottom: 3rem;
     font-weight: 300;
 }
-
 .cta-button.contact-btn {
     background-color: var(--color-accent-cream);
     color: var(--color-primary-dark);
     border: 2px solid var(--color-primary-dark);
 }
-
 .cta-button.contact-btn:hover {
     background-color: var(--color-primary-dark);
     color: var(--color-text-light);
@@ -530,19 +463,16 @@ a:hover {
 
 /* BIO TEXT SECTION */
 .bio-section {
-    /* Removed padding: 0 so it aligns correctly with the hero section */
     padding: 0;
     background-color: var(--color-primary-dark);
     color: var(--color-text-light);
     text-align: left;
 }
-
 .bio-container {
     padding: 3rem 5vw;
     max-width: 1200px;
     margin: 0 auto;
 }
-
 .bio-text p {
     font-size: 1.8rem;
     font-weight: 300;
@@ -555,7 +485,6 @@ a:hover {
 .highlight-section {
     background-color: var(--color-accent-cream);
 }
-
 .highlight-box {
     background-color: var(--color-secondary-light);
     color: var(--color-primary-dark);
@@ -565,13 +494,11 @@ a:hover {
     margin: 3rem auto;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
-
 .highlight-box h3 {
     font-size: 1.8rem;
     margin-bottom: 1rem;
     font-weight: 700;
 }
-
 .highlight-box p {
     font-size: 1.1rem;
 }
@@ -584,7 +511,6 @@ a:hover {
     margin-top: 4rem;
     text-align: left;
 }
-
 .process-step {
     padding: 1.5rem;
     border-radius: 10px;
@@ -592,7 +518,6 @@ a:hover {
     border-top: 5px solid var(--color-primary-dark);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
 }
-
 .step-icon {
     font-size: 2.5rem;
     font-weight: 800;
@@ -600,7 +525,6 @@ a:hover {
     display: block;
     margin-bottom: 1rem;
 }
-
 .process-step h4 {
     font-size: 1.2rem;
     color: var(--color-primary-dark);
@@ -614,7 +538,6 @@ a:hover {
     color: var(--color-text-light);
     padding: 6rem 5vw;
 }
-
 .values-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -622,7 +545,6 @@ a:hover {
     max-width: 1000px;
     margin: 0 auto;
 }
-
 .values-card {
     background-color: rgba(255, 255, 255, 0.05);
     padding: 2.5rem;
@@ -630,23 +552,19 @@ a:hover {
     text-align: left;
     border-left: 5px solid var(--color-secondary-light);
 }
-
 .values-card h3 {
     font-size: 2rem;
     color: var(--color-secondary-light);
     margin-bottom: 1.5rem;
 }
-
 .value-list {
     list-style-type: none;
     padding-left: 0;
 }
-
 .value-list li {
     margin-bottom: 10px;
     font-size: 1.05rem;
 }
-
 .value-list li strong {
     color: var(--color-accent-cream);
 }
@@ -656,7 +574,6 @@ a:hover {
 .trust-section {
     padding-top: 6rem;
 }
-
 .trust-list {
     list-style-type: none;
     padding-left: 0;
@@ -664,7 +581,6 @@ a:hover {
     margin: 3rem auto;
     text-align: left;
 }
-
 .trust-list li {
     background-color: var(--color-accent-cream);
     border-left: 4px solid var(--color-secondary-light);
@@ -674,7 +590,6 @@ a:hover {
     font-size: 1.1rem;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
-
 .trust-list li strong {
     color: var(--color-primary-dark);
     font-weight: 600;
@@ -687,18 +602,15 @@ a:hover {
     background-color: var(--color-secondary-light);
     text-align: center;
 }
-
 .cta-inner-box {
     max-width: 900px;
     margin: 0 auto;
 }
-
 .cta-inner-box h2 {
     color: var(--color-primary-dark);
     font-size: 3rem;
     margin-bottom: 1rem;
 }
-
 .cta-inner-box h3 {
     font-size: 2rem;
     margin-top: 3rem;
@@ -706,7 +618,6 @@ a:hover {
     color: var(--color-primary-dark);
     font-weight: 700;
 }
-
 .cta-inner-box p {
     font-size: 1.1rem;
     margin-bottom: 2rem;
@@ -735,9 +646,6 @@ a:hover {
         text-align: center;
     }
     .process-step h4 {
-        text-align: center;
-    }
-    .step-icon {
         text-align: center;
     }
 }

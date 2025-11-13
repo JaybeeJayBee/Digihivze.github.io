@@ -734,34 +734,62 @@ a:hover {
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 30px; /* Increased gap for better separation */
     margin-top: 4rem;
-    max-width: 1000px;
+    max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
 }
 .feature-box {
-    flex-basis: calc(20% - 20px); /* 5 items per row on desktop */
-    min-width: 150px;
+    flex-basis: calc(20% - 30px); /* 5 items per row on desktop */
+    min-width: 200px; /* Slightly wider min width */
     background-color: var(--color-accent-cream);
-    padding: 20px 10px;
-    border-radius: 6px;
+    padding: 25px 15px;
+    border-radius: 8px;
     text-align: center;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-    transition: background-color 0.2s;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 .feature-box:nth-child(even) {
-    /* Subtle vertical shading differentiation */
-    background-color: #f7f0e8; 
+    /* Subtle vertical shading differentiation removed for cleaner look */
+    background-color: var(--color-accent-cream); 
+}
+.feature-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
 }
 .feature-icon {
-    font-size: 2rem;
+    font-size: 2.5rem; /* Slightly larger icon */
     color: var(--color-primary-dark);
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
-.feature-box p {
-    font-weight: 600;
+.feature-title {
+    font-weight: 700;
     color: var(--color-primary-dark);
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+}
+.feature-detail {
+    font-size: 0.95rem;
+    color: var(--color-text-dark);
+    line-height: 1.4;
+}
+
+/* --- Responsive adjustment for 8. WHY TRUST US? --- */
+@media (max-width: 1024px) {
+    .feature-box {
+        flex-basis: calc(33.333% - 30px); /* 3 per row */
+    }
+}
+@media (max-width: 768px) {
+    .feature-box {
+        flex-basis: calc(50% - 20px); /* 2 per row */
+    }
+}
+@media (max-width: 480px) {
+    .feature-box {
+        flex-basis: 100%; /* 1 per row */
+    }
 }
 
 

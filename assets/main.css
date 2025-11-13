@@ -475,12 +475,13 @@ a:hover {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    /* Main Background remains dark for high contrast */
     background-color: var(--color-primary-dark); 
     color: var(--color-text-light);
     padding: 0;
     margin: 0;
-    /* High-resolution placeholder image with darkening overlay */
-    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5)), url('https://via.placeholder.com/1920x1080/6b4226/fff?text=High-Res+Chef+Plating+Dish');
+    /* High-resolution placeholder image with subtle darkening overlay */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url('https://via.placeholder.com/1920x1080/6b4226/fff?text=High-Res+Chef+Plating+Dish');
     background-size: cover;
     background-position: center;
 }
@@ -488,26 +489,32 @@ a:hover {
 .hero-content-area {
     position: relative;
     z-index: 10;
-    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.6);
+    /* Removing the dark text shadow to eliminate the muddy look */
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5); 
 }
 
 .hero-title {
     font-size: 5rem;
-    color: var(--color-primary-dark); 
-    font-family: 'Playfair Display', serif; /* Large, bold Serif font */
+    /* FIX: Set primary text to LIGHT ACCENT color for maximum contrast */
+    color: var(--color-accent-cream); 
+    font-family: 'Playfair Display', serif;
     font-weight: 700;
     margin-bottom: 0.25rem;
-    text-shadow: 4px 4px 0px var(--color-accent-cream); /* Wow effect text shadow */
+    /* FIX: Using a subtle shadow that glows, not over-sizing the text */
+    text-shadow: 0 0 15px rgba(248, 237, 235, 0.8); 
 }
 
 .hero-subtitle {
     font-size: 1.6rem;
-    color: var(--color-secondary-light); /* Secondary color for subtitle */
-    font-family: 'Poppins', sans-serif; /* Clean Sans-Serif font */
+    /* FIX: Set subtitle to SECONDARY color for clean contrast and branding */
+    color: var(--color-secondary-light); 
+    font-family: 'Poppins', sans-serif;
     font-weight: 300;
     margin-bottom: 2rem;
     letter-spacing: 1px;
 }
+
+/* Floating Bubbles Animation remains the same below this line */
 
 /* Floating Bubbles Animation */
 .hero-animation-bg {

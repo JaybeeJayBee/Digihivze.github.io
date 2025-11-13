@@ -553,20 +553,22 @@ a:hover {
 /* --- 3. IMAGE & BIO SECTION (High Contrast Bar) --- */
 .bio-bar {
     padding: 0;
-    /* FIX: Set margin-top to zero to rely entirely on the header's margin-bottom for spacing */
-    margin: 0 auto 0 auto;
-    background-color: var(--color-primary-dark);
+    /* FIX: Changed background to PRIMARY DARK for high contrast */
+    background-color: var(--color-primary-dark); 
     color: var(--color-text-light);
     text-align: center;
+    margin: 0 auto;
 }
 .bio-text-bar {
     font-size: 1.8rem;
     font-weight: 500;
-    color: var(--color-accent-cream);
+    /* FIX: Changed text color to LIGHT ACCENT for readability */
+    color: var(--color-accent-cream); 
     padding: 2.5rem 5vw;
     max-width: 1000px;
     margin: 0 auto;
     text-align: center;
+    font-style: italic; /* Adding style to emphasize the quote */
 }
 
 
@@ -581,6 +583,8 @@ a:hover {
     gap: 80px;
     text-align: left;
     max-width: 1200px;
+    /* FIX: Ensure content sits in the middle of the grid */
+    align-items: center; 
 }
 .heading-separator {
     width: 60px;
@@ -590,13 +594,28 @@ a:hover {
     margin-bottom: 30px;
 }
 .abstract-texture {
-    /* Soft, abstract food-related texture */
-    background-color: var(--color-texture-fade);
-    min-height: 300px;
+    /* Soft, abstract texture placeholder on the right side */
+    background-color: var(--color-secondary-light);
+    min-height: 350px;
     border-radius: 10px;
     box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.05);
+    /* FIX: Adding a subtle wave pattern to the texture background */
+    background-image: linear-gradient(45deg, rgba(255,255,255,.2) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.2) 50%, rgba(255,255,255,.2) 75%, transparent 75%, transparent);
+    background-size: 30px 30px;
 }
 
+/* Ensure mobile layout stacks correctly */
+@media (max-width: 768px) {
+    .two-col-layout {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        text-align: center;
+    }
+    .heading-separator {
+        /* Center separator on mobile */
+        margin: 10px auto 30px auto; 
+    }
+}
 
 /* --- 5. HOW WE WORK SECTION --- */
 .centered-heading {

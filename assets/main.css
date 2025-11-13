@@ -467,7 +467,7 @@ a:hover {
     background-color: var(--color-primary-dark);
 }
 
-/* --- 2. HEADER/HERO SECTION (100vh with Animation) --- */
+/* --- 2. HEADER/HERO SECTION (Video Background Implementation) --- */
 .hero-full-height {
     min-height: 70vh; 
     display: flex;
@@ -475,49 +475,73 @@ a:hover {
     justify-content: center;
     align-items: center;
     
-    /* Background setup for Parallax/Depth Effect */
-    background-color: #c99c68;
-    /* FIX: Use a subtle texture image for depth */
-    background-image: url('https://via.placeholder.com/1920x1080/c99c68/c09164?text=Subtle+Texture');
-    background-size: cover;
-    background-position: center;
-    /* FIX: This property creates the depth-of-field/parallax look */
-    background-attachment: fixed; 
-    
+    background-color: var(--color-primary-dark); /* Fallback color */
     color: var(--color-text-light);
     padding: 0;
     margin: 0;
+    background-image: none;
     
+    /* Strong shadow for division */
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.25); 
     margin-bottom: 2rem; 
+    
+    position: relative; /* Crucial for video positioning */
+    overflow: hidden; /* Contains video */
 }
 
+/* Darkening overlay for text readability over video */
+.hero-full-height::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* FIX: Darkens the video by 50% using black for high contrast */
+    background: rgba(0, 0, 0, 0.5); 
+    z-index: 5; 
+}
+
+/* Video Styling to cover the entire container */
+.video-bg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures video covers entire space */
+    transform: translate(-50%, -50%);
+    z-index: 1; /* Sits below the text and overlay */
+}
+
+/* Text Content Area */
 .hero-content-area {
     position: relative;
-    z-index: 10;
-    /* Apply the scaling animation */
+    z-index: 10; /* Ensures text is always visible on top */
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5); 
+    
     animation: titleScale 4s ease-in-out infinite alternate;
-    /* FIX: Add a background blur to make text pop over texture/bubbles */
-    background: rgba(255, 255, 255, 0.05);
+    /* Cleaned up background blur for video environment */
+    background: rgba(255, 255, 255, 0.0);
     padding: 20px 40px;
     border-radius: 10px;
-    backdrop-filter: blur(2px);
+    backdrop-filter: none; /* No blur over video */
 }
 
 .hero-title {
     font-size: 5rem;
+    /* FIX: White text for maximum contrast against dark video */
     color: var(--color-accent-cream); 
     font-family: 'Playfair Display', serif;
     font-weight: 700;
     margin-bottom: 0.25rem;
-    /* FIX: Add slight letter spacing for a sleek, spaced-out feel */
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.8); /* Strong shadow over video */
     letter-spacing: 2px;
-    /* FIX: Small text shadow for a crisp, digital look */
-    text-shadow: 0 0 2px rgba(248, 237, 235, 0.5); 
 }
 
 .hero-subtitle {
     font-size: 1.6rem;
+    /* White text for contrast */
     color: var(--color-accent-cream); 
     font-family: 'Poppins', sans-serif;
     font-weight: 300;
@@ -535,37 +559,7 @@ a:hover {
     }
 }
 
-/* Floating Bubbles Animation remains the same below this line */
-.hero-animation-bg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    overflow: hidden;
-}
-
-.hero-animation-bg div {
-    position: absolute;
-    display: block;
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 50%;
-    opacity: 0;
-    animation: floatingBubbles 20s infinite ease-in-out;
-    filter: blur(8px);
-}
-/* Bubble positions and animation-delays remain the same */
-.bubble-1 { top: 70%; left: 10%; width: 100px; height: 100px; animation-delay: 0s; }
-.bubble-2 { top: 20%; left: 50%; width: 60px; height: 60px; animation-delay: 5s; animation-duration: 25s; }
-.bubble-3 { top: 85%; left: 80%; width: 150px; height: 150px; animation-delay: 10s; animation-duration: 30s; }
-.bubble-4 { top: 40%; left: 25%; width: 80px; height: 80px; animation-delay: 15s; }
-
-@keyframes floatingBubbles {
-    0% { transform: translateY(0) translateX(0); opacity: 0; }
-    30% { opacity: 0.7; } 
-    100% { transform: translateY(-100vh) translateX(50px); opacity: 0; }
-}
+/* Remove Floating Bubbles CSS here, as the video replaces them */
 
 /* Add a responsive adjustment to keep it small on small screens */
 @media (max-width: 600px) {

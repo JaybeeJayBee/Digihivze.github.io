@@ -738,19 +738,46 @@ a:hover {
     max-width: 900px;
     margin: 3rem auto 0;
     position: relative;
-    padding: 30px;
-    border-top: 2px solid var(--color-secondary-light);
-    border-bottom: 2px solid var(--color-secondary-light);
+    /* RESTORE PADDING for the content inside the lines */
+    padding: 30px 20px; 
+    
+    /* Stronger horizontal lines */
+    border-top: 3px solid var(--color-secondary-light); 
+    border-bottom: 3px solid var(--color-secondary-light);
 }
 .goal-quote-text {
     font-size: 1.5rem;
     font-style: italic;
     line-height: 1.5;
     color: var(--color-primary-dark);
+    /* Remove internal padding that was causing conflict */
+    padding: 0; 
+    margin: 0 auto;
+    max-width: 80%; /* Constrain text width for visual effect */
 }
 
 /* Updated Quote Mark Styling */
+.open-quote, .close-quote {
+    font-size: 6rem; 
+    color: rgba(107, 66, 38, 0.15); 
+    position: absolute;
+    line-height: 1;
+    z-index: 2; 
+    font-weight: 300; 
+}
 
+.open-quote {
+    /* FIX: Position relative to the top-left corner of the container */
+    top: -25px; 
+    left: 20px; 
+    /* FIX: Ensure the quote mark is visually behind the line */
+    z-index: 0; 
+}
+.close-quote {
+    /* FIX: Position relative to the bottom-right corner of the container */
+    bottom: -45px; 
+    right: 20px;
+}
 
 /* ... rest of the CSS continues ... */
 

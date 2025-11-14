@@ -1845,3 +1845,106 @@ body {
     /* Ensure the scale transform doesn't interfere with other elements */
     display: inline-block; 
 }
+
+/* --- NEW STYLES FOR POLICIES.HTML --- */
+
+/* Note: Global styles like body, container, a, etc., are already handled by main.css */
+
+.policy-header-override {
+    /* Use the policy-header-override class to apply the gradient styling to the main page header */
+    background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-secondary-light) 100%);
+    color: var(--color-text-light);
+    padding: 4.5rem 0;
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+/* Redefining header styles to be contained within the content block */
+.policy-section h2 {
+    font-size: 2rem;
+    margin: 3rem 0 2rem;
+    color: var(--color-primary-dark);
+    position: relative;
+    padding-bottom: 0.8rem;
+    font-weight: 600;
+}
+
+.policy-section h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 80px;
+    height: 4px;
+    background: var(--color-secondary-light);
+}
+
+.policy-section h3 {
+    font-size: 1.5rem;
+    margin: 2rem 0 1.5rem;
+    color: var(--color-primary-dark);
+    font-weight: 500;
+}
+
+/* Policy Section Container */
+.policy-section {
+    background: white;
+    border-radius: 12px;
+    padding: 3rem;
+    margin-bottom: 3.5rem;
+    box-shadow: 0 8px 25px rgba(107, 66, 38, 0.08);
+    border-left: 5px solid var(--color-secondary-light);
+}
+
+.badge {
+    display: inline-block;
+    font-size: 1.8rem;
+    margin-right: 1rem;
+    vertical-align: middle;
+    color: var(--color-secondary-light);
+}
+
+.refund-list {
+    list-style: none;
+    padding-left: 0;
+    margin: 2rem 0;
+}
+
+.refund-list li {
+    position: relative;
+    padding-left: 2.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.refund-list li::before {
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+    font-size: 1.3rem;
+}
+
+.refund-list li.yes::before {
+    content: '✓';
+    color: var(--color-secondary-light);
+}
+
+.refund-list li.no::before {
+    content: '✗';
+    color: var(--color-gray); /* Using existing muted color */
+}
+
+.highlight {
+    background-color: rgba(107, 66, 38, 0.05);
+    border-left: 4px solid var(--color-secondary-light);
+    padding: 2rem;
+    border-radius: 0 8px 8px 0;
+    margin: 2.5rem 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .policy-section {
+        padding: 2.5rem;
+        margin-bottom: 3rem;
+    }
+}

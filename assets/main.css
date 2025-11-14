@@ -1822,3 +1822,26 @@ body {
     position: relative;
     z-index: 1; 
 }
+
+/* --- NEW STYLES FOR AFFILIATE TITLE ANIMATION --- */
+
+/* Define the continuous zoom-in/zoom-out animation */
+@keyframes titlePulse {
+    0% {
+        transform: scale(1.0);
+    }
+    50% {
+        transform: scale(1.02); /* Zoom in slightly (2%) */
+    }
+    100% {
+        transform: scale(1.0);
+    }
+}
+
+/* Apply the animation to the heading */
+.affiliate-hero .affiliate-title {
+    /* Duration: 3 seconds (medium pace) | Timing: ease-in-out for smooth start/stop | Loop: infinite */
+    animation: titlePulse 3s ease-in-out infinite;
+    /* Ensure the scale transform doesn't interfere with other elements */
+    display: inline-block; 
+}

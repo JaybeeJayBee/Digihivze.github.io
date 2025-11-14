@@ -768,7 +768,7 @@ a:hover {
 
 .open-quote {
     /* FIX: Position relative to the top-left corner of the container */
-    top: -25px; 
+    top: -10px; 
     left: 20px; 
     /* FIX: Ensure the quote mark is visually behind the line */
     z-index: 0; 

@@ -1408,8 +1408,10 @@ body {
     }
 }
 
+/* --- CORRECTED INSTAGRAM SOCIAL BUTTON COLOR --- */
 .social-btn.instagram {
-    /* Instagram Gradient color */
-    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);
-    border: 2px solid var(--color-text-light); /* Added light border for contrast */
+    /* Instagram Gradient color with !important to ensure override */
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%) !important;
+    border: 2px solid var(--color-text-light); /* Light border for contrast */
+    color: white !important; /* Ensure the icon color is white */
 }

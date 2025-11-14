@@ -1415,3 +1415,317 @@ body {
     border: 2px solid var(--color-text-light); /* Light border for contrast */
     color: white !important; /* Ensure the icon color is white */
 }
+
+/* --- NEW STYLES FOR AFFILIATES.HTML (Futuristic/High-Value Design) --- */
+
+.affiliate-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* === HEADER/HERO SECTION === */
+.affiliate-hero {
+    background: linear-gradient(135deg, var(--color-primary-dark), var(--color-secondary-light));
+    color: var(--color-text-light);
+    padding: 6rem 0 4rem;
+    text-align: center;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.affiliate-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--color-accent-cream);
+}
+
+.affiliate-subtitle {
+    font-size: 1.8rem;
+    font-weight: 300;
+    margin-bottom: 2rem;
+    color: #fff;
+    opacity: 0.9;
+}
+
+.affiliate-intro {
+    font-size: 1.1rem;
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.8;
+}
+
+/* === GENERAL SECTION STYLES === */
+.affiliate-tiers-section {
+    padding: 4rem 0 6rem;
+    text-align: center;
+}
+
+.section-heading {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    color: var(--color-primary-dark);
+    margin-bottom: 2rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--color-secondary-light);
+    display: inline-block;
+}
+
+.program-note {
+    font-size: 1.1rem;
+    max-width: 900px;
+    margin: 0 auto 3rem;
+    color: var(--color-text-dark);
+}
+
+/* === COMMISSION TABLE === */
+.commission-table-wrapper {
+    margin: 3rem auto;
+    max-width: 700px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.commission-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.commission-table th, .commission-table td {
+    padding: 18px;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+}
+
+.commission-table thead th {
+    background-color: var(--color-primary-dark);
+    color: var(--color-text-light);
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.commission-table tbody td {
+    background-color: var(--color-accent-cream);
+    border-bottom: 1px solid rgba(107, 66, 38, 0.1);
+    color: var(--color-text-dark);
+}
+
+.commission-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* TABLE NOTE BLOCKQUOTE */
+.commission-note {
+    background-color: rgba(212, 163, 115, 0.1); /* Light background using secondary color */
+    border-left: 5px solid var(--color-secondary-light);
+    padding: 1.5rem;
+    margin: 3rem auto;
+    max-width: 900px;
+    text-align: left;
+    font-style: italic;
+    color: var(--color-gray);
+    border-radius: 5px;
+}
+
+
+/* === TIER CARDS (Grid Layout) === */
+.tier-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+    max-width: 1000px;
+    margin: 5rem auto 3rem;
+}
+
+.tier-card {
+    background-color: white;
+    border-radius: 12px;
+    padding: 2.5rem;
+    text-align: left;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+    border-top: 8px solid;
+    position: relative;
+}
+
+.tier-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+}
+
+.tier-partner {
+    border-color: var(--color-primary-dark);
+}
+
+.tier-inviter {
+    border-color: var(--color-secondary-light);
+}
+
+.tier-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+    color: var(--color-primary-dark);
+}
+
+.tier-card h4 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.2rem;
+    color: var(--color-secondary-light);
+    margin-top: 1.5rem;
+    margin-bottom: 0.8rem;
+    font-weight: 600;
+}
+
+.tier-card ul {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 1.5rem;
+}
+
+.tier-card ul li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 10px;
+    line-height: 1.6;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    color: var(--color-text-dark);
+}
+
+.tier-card ul li::before {
+    content: "•";
+    color: var(--color-secondary-light);
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+    position: absolute;
+    left: 0;
+}
+
+
+/* === APPLICATION SECTION === */
+.application-section {
+    max-width: 900px;
+    margin: 5rem auto;
+    background-color: var(--color-accent-cream);
+    padding: 3rem 4rem;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(107, 66, 38, 0.1);
+}
+
+.application-intro {
+    font-size: 1.1rem;
+    margin-bottom: 2.5rem;
+    color: var(--color-text-dark);
+    text-align: center;
+}
+
+.application-steps {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+    margin-bottom: 3rem;
+}
+
+.application-steps li {
+    background-color: white;
+    padding: 15px 25px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+    border-left: 5px solid var(--color-secondary-light);
+}
+
+.application-steps li strong {
+    color: var(--color-primary-dark);
+    font-weight: 600;
+    display: inline-block;
+    width: 150px;
+}
+
+.dashboard-info-box {
+    background-color: var(--color-primary-dark);
+    color: var(--color-text-light);
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    text-align: left;
+}
+.dashboard-info-box p {
+    line-height: 1.6;
+}
+
+.application-email-details {
+    line-height: 2;
+    margin-bottom: 2rem;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+}
+
+/* CTA BUTTON */
+.cta-apply-btn {
+    display: inline-block;
+    padding: 1rem 3rem;
+    background-color: var(--color-secondary-light);
+    color: var(--color-primary-dark);
+    font-weight: 700;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: background-color 0.3s, transform 0.2s;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    font-family: 'Poppins', sans-serif;
+}
+
+.cta-apply-btn:hover {
+    background-color: #c1915a;
+    transform: translateY(-2px);
+}
+
+.join-us-motto {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    color: var(--color-secondary-light);
+    padding-top: 3rem;
+}
+
+/* === RESPONSIVENESS === */
+@media (max-width: 768px) {
+    .affiliate-hero {
+        padding: 4rem 0 3rem;
+    }
+    .affiliate-title {
+        font-size: 2.5rem;
+    }
+    .affiliate-subtitle {
+        font-size: 1.4rem;
+    }
+    .tier-cards-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    .application-section {
+        padding: 2rem;
+    }
+    .application-steps li {
+        text-align: center;
+    }
+    .application-steps li strong {
+        display: block;
+        margin-bottom: 5px;
+        width: auto;
+    }
+    .commission-table th, .commission-table td {
+        padding: 12px;
+        font-size: 0.9rem;
+    }
+    .cta-apply-btn {
+        width: 100%;
+        max-width: 300px;
+    }
+}

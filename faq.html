@@ -3,25 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Digihivze</title>
-
-    <link rel="icon" type="image/webp" href="https://i.ibb.co/jP5gg2HT/IMG-20250819-143112-516.webp">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="assets/main.css">
-</head>
-<body>
-
-    <div id="nav-system-placeholder"></div>
-
-    <main id="page-content">
-       <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FAQ - The Food & Recipe Agency</title>
 
     <link rel="icon" type="image/webp" href="https://i.ibb.co/jP5gg2HT/IMG-20250819-143112-516.webp">
@@ -152,47 +133,46 @@
                 <a href="https://www.digihivze.store/our-creations-hub" class="btn btn-secondary">Browse Recipes</a>
             </section>
         </div>
-    </main>
+        </main>
 
     <div id="footer-placeholder"></div>
 
     <script src="scripts/component-injector.js"></script>
     <script>
-        // FAQ Accordion Functionality
+        // FAQ Accordion Functionality - CORRECTED LOGIC (Single Open)
         document.addEventListener('DOMContentLoaded', () => {
-            document.querySelectorAll('.faq-question').forEach(question => {
+            const allQuestions = document.querySelectorAll('.faq-question');
+
+            allQuestions.forEach(question => {
                 question.addEventListener('click', () => {
                     const answer = question.nextElementSibling;
                     const isActive = question.classList.contains('active');
-    
-                    // Close all other items
-                    document.querySelectorAll('.faq-question').forEach(q => {
+
+                    // 1. Close ALL other answers first
+                    allQuestions.forEach(q => {
                         if (q !== question) {
                             q.classList.remove('active');
                             q.nextElementSibling.classList.remove('show');
+                            q.nextElementSibling.style.maxHeight = '0'; // Ensure smooth close
                         }
                     });
-    
-                    // Toggle current item
-                    question.classList.toggle('active');
-                    answer.classList.toggle('show');
-    
-                    // Ensure max-height logic runs (if using max-height for transition)
-                    if (answer.classList.contains('show')) {
-                        // Max-height needs to be set high enough to allow the content to fully open
-                        answer.style.maxHeight = answer.scrollHeight + 50 + 'px'; 
-                    } else {
+
+                    // 2. Toggle the current item (open if closed, close if open)
+                    if (isActive) {
+                        // Close the current item
+                        question.classList.remove('active');
+                        answer.classList.remove('show');
                         answer.style.maxHeight = '0';
+                    } else {
+                        // Open the current item
+                        question.classList.add('active');
+                        answer.classList.add('show');
+                        // Set maxHeight for smooth opening transition
+                        answer.style.maxHeight = answer.scrollHeight + 50 + 'px'; 
                     }
                 });
             });
         });
     </script>
-</body>
-</html>
-
-    <div id="footer-placeholder"></div>
-
-    <script src="scripts/component-injector.js"></script>
 </body>
 </html>

@@ -73,15 +73,40 @@ document.addEventListener('DOMContentLoaded', () => {
             lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; 
         });
 
-        // --- NEW: Reviews Submenu Toggle Logic ---
+
+        // Helper function to ensure only one submenu is open at a time
+        function closeOtherSubmenus(currentOpenParent) {
+            document.querySelectorAll('.has-submenu.active').forEach(parent => {
+                // The querySelectorAll('.has-submenu.active') needs to be scoped to the navigation menu
+                // For simplicity, we compare the parent elements directly
+                if (parent !== currentOpenParent) {
+                    parent.classList.remove('active');
+                }
+            });
+        }
+        
+        // --- NEW: Programs & Offers Submenu Toggle Logic ---
+        const programsToggle = document.getElementById('programs-toggle');
+        // Find the closest parent <li> with class .has-submenu for reliability
+        const programsParent = programsToggle ? programsToggle.closest('.has-submenu') : null;
+
+        if (programsToggle && programsParent) {
+            programsToggle.addEventListener('click', (e) => {
+                e.preventDefault(); 
+                closeOtherSubmenus(programsParent);
+                programsParent.classList.toggle('active');
+            });
+        }
+
+        // --- Reviews Submenu Toggle Logic (Updated for single-open functionality) ---
         const reviewsToggle = document.getElementById('reviews-toggle');
-        const reviewsParent = document.querySelector('.has-submenu');
+        // Find the closest parent <li> with class .has-submenu for reliability
+        const reviewsParent = reviewsToggle ? reviewsToggle.closest('.has-submenu') : null;
 
         if (reviewsToggle && reviewsParent) {
             reviewsToggle.addEventListener('click', (e) => {
-                e.preventDefault(); // Stop navigation to '#'
-
-                // Toggle the 'active' class on the parent <li> element
+                e.preventDefault(); 
+                closeOtherSubmenus(reviewsParent); // Ensure 'Programs' closes if 'Reviews' opens
                 reviewsParent.classList.toggle('active');
             });
         }

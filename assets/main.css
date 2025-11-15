@@ -2133,7 +2133,7 @@ body {
 .horizontal-scroll-container { -ms-overflow-style: none; scrollbar-width: none; }
 
 
-/* --- PRODUCT CARD STYLING (HEIGHT FIX) --- */
+/* --- PRODUCT CARD STYLING (HEIGHT FIX APPLIED) --- */
 
 .product-card {
     flex-shrink: 0;
@@ -2154,9 +2154,18 @@ body {
 
 .product-card-image {
     width: 100%;
-    /* Reduced image height to shrink overall card height */
-    height: 180px;
+    height: 180px; 
     overflow: hidden;
+    /* FIX: Ensure the container is ready for the image */
+    display: block; 
+}
+
+.product-card-image img {
+    /* FIX: Use fixed dimensions to force reliable display */
+    width: 100%;
+    height: 180px; 
+    object-fit: cover;
+    transition: transform 0.5s ease;
 }
 
 .product-card-content {

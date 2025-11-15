@@ -2303,3 +2303,22 @@ body {
 .has-submenu.active .submenu-icon {
     transform: rotate(180deg);
 }
+
+/* --- NEW FIX: Mobile Menu Link Spacing --- */
+@media (max-width: 600px) {
+    /* Ensure the main navigation links have some left/right room */
+    .overlay-menu a {
+        /* Re-apply styling for main links */
+        font-size: 2rem; /* Keep existing font size, or adjust */
+        padding: 0.5rem 20px; /* ADD horizontal padding (e.g., 20px left/right) */
+        width: 100%;
+        box-sizing: border-box;
+    }
+    
+    /* Ensure the submenu toggles (like Programs & Reviews) align nicely */
+    .submenu-toggle {
+        padding: 0.5rem 20px; /* Apply padding here too */
+        justify-content: space-between; /* Spread the text and chevron */
+    }
+}
+

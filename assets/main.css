@@ -185,11 +185,13 @@ a:hover {
     text-align: center;
 }
 .overlay-menu li {
-    margin: 0.8rem 0;
+    /* Reduced vertical space between links */
+    margin: 0.5rem 0; 
 }
 .overlay-menu a {
     color: var(--color-text-light);
-    font-size: 1.8rem; 
+    /* **FIX: Reduced Font Size** */
+    font-size: 1.3rem; 
     font-weight: 700; 
     display: inline-block;
     padding: 0.5rem 0;
@@ -276,7 +278,6 @@ a:hover {
         opacity: 0;
     }
 }
-
 
 /* --- 3. STANDARDIZED FOOTER STYLES (Grid Layout Fix) --- */
 

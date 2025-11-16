@@ -185,13 +185,12 @@ a:hover {
     text-align: center;
 }
 .overlay-menu li {
-    /* Reduced vertical space between links */
     margin: 0.5rem 0; 
 }
 .overlay-menu a {
     color: var(--color-text-light);
-    /* **FIX: Reduced Font Size** */
-    font-size: 1.3rem; 
+    /* **FIX: Reduced Font Size to 1.1rem** */
+    font-size: 1.1rem; 
     font-weight: 700; 
     display: inline-block;
     padding: 0.5rem 0;
@@ -212,6 +211,16 @@ a:hover {
 .overlay-menu a:hover::after {
     width: 0; 
 }
+
+/* --- Menu Divider Style (New) --- */
+.menu-divider {
+    border: none; /* Remove default border */
+    border-top: 1px solid rgba(255, 255, 255, 0.15); /* Light, subtle white line */
+    width: 60%; 
+    margin: 1.5rem auto; /* Vertical spacing and centering */
+}
+
+
 .overlay-tagline {
     margin-top: 2.5rem; 
     color: var(--color-secondary-light);

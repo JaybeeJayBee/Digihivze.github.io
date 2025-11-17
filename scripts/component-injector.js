@@ -37,17 +37,48 @@ document.addEventListener('DOMContentLoaded', () => {
     injectComponent(footerPlaceholder, 'footer.html');
 
 
-    // --- NEW: Highlight Current Page Logic ---
+    // --- NEW: Highlight Current Page Logic (CORRECTED FOR CLEAN URLs) ---
     function highlightCurrentPage() {
-        const currentPath = window.location.pathname;
-        // Extracts the filename (e.g., '/path/to/faq.html' -> 'faq.html')
-        const currentPage = currentPath.substring(currentPath.lastIndexOf('/') + 1) || 'index.html'; 
+        const currentPathname = window.location.pathname.toLowerCase();
+        
+        // 1. Determine the path segment (e.g., /creations-hub/ or /faq/)
+        //    For the home page ('/'), this results in '/'
+        //    For project pages (/RepoName/page), it gets the segment after the repo name.
+        const pathSegments = currentPathname.split('/').filter(segment => segment.length > 0);
+        
+        // Use the last segment (or treat home as '/')
+        let currentPageSegment = '/';
+        if (pathSegments.length > 0) {
+            // This handles Project Pages like /Repo/page
+            currentPageSegment = '/' + pathSegments[pathSegments.length - 1]; 
+        }
 
+        // Handle index.html or empty path for the root (Home)
+        if (currentPageSegment === '/index.html' || currentPageSegment === '//') {
+            currentPageSegment = '/';
+        }
+        
         const menuLinks = document.querySelectorAll('.overlay-menu a');
 
         menuLinks.forEach(link => {
-            const linkPath = link.getAttribute('href');
-            if (linkPath === currentPage) {
+            let linkPath = link.getAttribute('href').toLowerCase();
+            
+            // Normalize linkPath: Ensure it ends with a slash if it's not the root.
+            if (linkPath !== '/' && !linkPath.endsWith('/')) {
+                linkPath = linkPath + '/';
+            }
+            
+            // Normalize current segment for comparison (e.g., ensures /faq/ matches /faq/)
+            const normalizedCurrentSegment = currentPageSegment.endsWith('/') ? currentPageSegment : currentPageSegment + '/';
+            
+            // Comparison: Check if the link path (e.g., /creations-hub/) is contained in the current URL path.
+            // This is robust for both /project/page and /page/ URLs.
+            
+            if (currentPathname === linkPath || currentPathname.includes(linkPath) && linkPath !== '/') {
+                 // For all links except Home, if the path matches, activate it
+                 link.classList.add('active-page');
+            } else if (linkPath === '/' && (currentPathname === '/' || currentPathname === '/index.html')) {
+                // Special check for Home page activation
                 link.classList.add('active-page');
             }
         });

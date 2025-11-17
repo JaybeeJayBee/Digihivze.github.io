@@ -130,7 +130,7 @@ a:hover {
     pointer-events: none; 
 }
 
-/* --- 2B. NAVIGATION MENU (Overlay) - FINAL FIXES V7 (FORCED COMPRESSION) --- */
+/* --- 2B. NAVIGATION MENU (Overlay) - FINAL PERFECTED SIZE --- */
 .nav-overlay {
     position: fixed;
     top: 0;
@@ -194,21 +194,20 @@ a:hover {
     margin: 0; 
 }
 
-/* --- FORCED STYLING ON LINK TEXT AND PADDING --- */
+/* --- FINAL PERFECTED LINK STYLING --- */
 .overlay-menu a {
     color: var(--color-text-light);
-    /* EXTREME TEXT SIZE REDUCTION: 0.7rem, FORCED */
-    font-size: 0.7rem !important; 
+    /* **FINAL SIZE: 0.9rem (Readable and Compact)** */
+    font-size: 0.9rem; 
     font-weight: 700; 
     display: inline-block;
-    /* Minimized padding, FORCED */
-    padding: 0.1rem 0 !important; 
+    /* Slightly increased vertical padding for better touch targets */
+    padding: 0.2rem 0; 
     letter-spacing: 2px; 
     text-transform: uppercase;
     position: relative;
     transition: color 0.3s, text-shadow 0.3s; 
-    /* Line height, FORCED */
-    line-height: 1.0 !important; 
+    line-height: 1.2; 
 }
 .overlay-menu a::after {
     display: none; 
@@ -222,17 +221,18 @@ a:hover {
     width: 0; 
 }
 
-/* --- Menu Divider Style (MAX COMPRESSION) --- */
+/* --- Menu Divider Style (Refined Spacing) --- */
 .menu-divider {
     border: none; 
     border-top: 1px solid rgba(255, 255, 255, 0.15); 
     width: 60%; 
-    margin: 0.4rem auto; 
+    /* Increased margin for better separation */
+    margin: 0.5rem auto; 
 }
 
 
 .overlay-tagline {
-    margin-top: 1.0rem; 
+    margin-top: 1.5rem; /* Better breathing room */
     color: var(--color-secondary-light);
     font-style: italic;
     font-size: 0.85rem; 
@@ -299,30 +299,30 @@ a:hover {
     }
 }
 
-/* FIX: Mobile Optimization (HYPER COMPRESSION) */
+/* FIX: Mobile Optimization (FINAL PERFECTED SIZE) */
 @media (max-height: 700px) and (max-width: 480px) {
     .close-btn {
         top: 10px; 
         right: 20px;
     }
     .nav-overlay {
-        padding-top: 25px; 
+        padding-top: 30px; 
     }
     .overlay-menu li {
         margin: 0; 
     }
     .overlay-menu a {
-        /* Mobile size FORCED */
-        font-size: 0.65rem !important; 
-        line-height: 1.0 !important;
-        padding: 0.1rem 0 !important; 
+        /* Mobile size: 0.8rem */
+        font-size: 0.8rem; 
+        line-height: 1.2; /* Resetting to standard tight line height */
+        padding: 0.2rem 0; 
     }
     .menu-divider {
-        margin: 0.2rem auto; 
+        margin: 0.4rem auto; 
     }
     .overlay-tagline {
-        margin-top: 0.2rem; 
-        font-size: 0.65rem;
+        margin-top: 0.5rem; 
+        font-size: 0.75rem;
     }
 }
 

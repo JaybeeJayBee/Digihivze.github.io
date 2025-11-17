@@ -130,7 +130,7 @@ a:hover {
     pointer-events: none; 
 }
 
-/* --- 2B. NAVIGATION MENU (Overlay) - FINAL DEFINITIVE FIX --- */
+/* --- 2B. NAVIGATION MENU (Overlay) - FINAL SIZE 1.3rem --- */
 .nav-overlay {
     position: fixed;
     top: 0;
@@ -191,17 +191,19 @@ a:hover {
     text-align: center;
 }
 .overlay-menu li {
-    margin: 0; 
+    /* Adjusted margin for 1.3rem text */
+    margin: 0.1rem 0; 
 }
 
-/* --- FINAL PERFECTED MAIN LINK STYLING (0.9rem) --- */
+/* --- FINAL PERFECTED MAIN LINK STYLING (1.3rem) --- */
 .overlay-menu a {
     color: var(--color-text-light);
-    /* FINAL DESIRED SIZE: 0.9rem, FORCED */
-    font-size: 0.9rem !important; 
+    /* **FINAL DESIRED SIZE: 1.3rem, FORCED for reliability** */
+    font-size: 1.3rem !important; 
     font-weight: 700; 
     display: inline-block;
-    padding: 0.2rem 0 !important; 
+    /* Adjusted padding for 1.3rem font */
+    padding: 0.3rem 0 !important; 
     letter-spacing: 2px; 
     text-transform: uppercase;
     position: relative;
@@ -225,12 +227,13 @@ a:hover {
     border: none; 
     border-top: 1px solid rgba(255, 255, 255, 0.15); 
     width: 60%; 
-    margin: 0.5rem auto; 
+    /* Adjusted margin for better breathing room */
+    margin: 0.8rem auto; 
 }
 
 
 .overlay-tagline {
-    margin-top: 1.5rem; 
+    margin-top: 2.0rem; 
     color: var(--color-secondary-light);
     font-style: italic;
     font-size: 0.85rem; 
@@ -299,13 +302,13 @@ a:hover {
 
 /* --- FIX: SUBMENU TEXT SIZE HIERARCHY --- */
 .submenu-item-text {
-    /* Set size smaller than the main links (0.9rem) */
-    font-size: 0.65rem; 
+    /* Set size smaller than the new main links (1.3rem) */
+    font-size: 0.9rem; 
     font-weight: 300; 
     padding: 3px 0;
     opacity: 0.7;
     /* CRITICAL FIX: Ensure the size is not overridden by a parent body/ul style */
-    font-size: 0.65rem !important; 
+    font-size: 0.9rem !important; 
 }
 
 /* FIX: Mobile Optimization (FINAL PERFECTED SIZE) */
@@ -321,21 +324,21 @@ a:hover {
         margin: 0; 
     }
     .overlay-menu a {
-        /* Mobile size: 0.8rem, FORCED */
-        font-size: 0.8rem !important; 
+        /* Mobile size: 1.1rem, FORCED */
+        font-size: 1.1rem !important; 
         line-height: 1.2 !important; 
-        padding: 0.2rem 0 !important; 
+        padding: 0.3rem 0 !important; 
     }
     .menu-divider {
-        margin: 0.4rem auto; 
+        margin: 0.5rem auto; 
     }
     .overlay-tagline {
-        margin-top: 0.5rem; 
+        margin-top: 0.8rem; 
         font-size: 0.75rem;
     }
     /* FIX: Submenu text size on mobile */
     .submenu-item-text {
-        font-size: 0.6rem !important;
+        font-size: 0.7rem !important;
     }
 }
 

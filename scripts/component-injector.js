@@ -23,6 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 placeholder.innerHTML = html;
                 if (sourceFile === 'nav.html') {
                     setupNavigation(); // Setup Nav after injection
+                    highlightCurrentPage(); // *** NEW: Highlight the current page after setup ***
                 }
                 if (sourceFile === 'footer.html') {
                     setupFooter(); // Setup Footer text after injection
@@ -34,6 +35,23 @@ document.addEventListener('DOMContentLoaded', () => {
     // Load components
     injectComponent(navPlaceholder, 'nav.html');
     injectComponent(footerPlaceholder, 'footer.html');
+
+
+    // --- NEW: Highlight Current Page Logic ---
+    function highlightCurrentPage() {
+        const currentPath = window.location.pathname;
+        // Extracts the filename (e.g., '/path/to/faq.html' -> 'faq.html')
+        const currentPage = currentPath.substring(currentPath.lastIndexOf('/') + 1) || 'index.html'; 
+
+        const menuLinks = document.querySelectorAll('.overlay-menu a');
+
+        menuLinks.forEach(link => {
+            const linkPath = link.getAttribute('href');
+            if (linkPath === currentPage) {
+                link.classList.add('active-page');
+            }
+        });
+    }
 
     // --- Navigation System Logic (Visibility, Open/Close) ---
     function setupNavigation() {
@@ -77,17 +95,14 @@ document.addEventListener('DOMContentLoaded', () => {
         // Helper function to ensure only one submenu is open at a time
         function closeOtherSubmenus(currentOpenParent) {
             document.querySelectorAll('.has-submenu.active').forEach(parent => {
-                // The querySelectorAll('.has-submenu.active') needs to be scoped to the navigation menu
-                // For simplicity, we compare the parent elements directly
                 if (parent !== currentOpenParent) {
                     parent.classList.remove('active');
                 }
             });
         }
         
-        // --- NEW: Programs & Offers Submenu Toggle Logic ---
+        // --- Programs & Offers Submenu Toggle Logic ---
         const programsToggle = document.getElementById('programs-toggle');
-        // Find the closest parent <li> with class .has-submenu for reliability
         const programsParent = programsToggle ? programsToggle.closest('.has-submenu') : null;
 
         if (programsToggle && programsParent) {
@@ -100,13 +115,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // --- Reviews Submenu Toggle Logic (Updated for single-open functionality) ---
         const reviewsToggle = document.getElementById('reviews-toggle');
-        // Find the closest parent <li> with class .has-submenu for reliability
         const reviewsParent = reviewsToggle ? reviewsToggle.closest('.has-submenu') : null;
 
         if (reviewsToggle && reviewsParent) {
             reviewsToggle.addEventListener('click', (e) => {
                 e.preventDefault(); 
-                closeOtherSubmenus(reviewsParent); // Ensure 'Programs' closes if 'Reviews' opens
+                closeOtherSubmenus(reviewsParent); 
                 reviewsParent.classList.toggle('active');
             });
         }

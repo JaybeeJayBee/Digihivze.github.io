@@ -2031,220 +2031,6 @@ body {
     }
 }
 
-/* --- NEW CREATIONS HUB STYLES (creations-hub.html) --- */
-
-/* 1. HEADER & ZOOM ANIMATION */
-.creations-header {
-    position: relative;
-    height: 65vh; /* Large, professional height */
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    margin-bottom: var(--spacing-lg); /* Space above the product grid */
-}
-
-.header-background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-position: center;
-    
-    /* Smooth Zoom Animation Definition */
-    animation: scaleZoom 15s infinite alternate ease-in-out;
-}
-
-@keyframes scaleZoom {
-    0% { transform: scale(1); }
-    100% { transform: scale(1.1); }
-}
-
-.header-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    /* Dark overlay for text readability, using primary brown */
-    background-color: rgba(107, 66, 38, 0.65); 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 10;
-}
-
-.welcome-text-container {
-    max-width: 800px;
-    padding: 20px;
-    color: var(--color-text-light);
-}
-
-.welcome-title {
-    font-size: 3rem;
-    color: var(--color-accent-cream);
-    margin-bottom: 1rem;
-    line-height: 1.2;
-}
-
-.welcome-subtitle {
-    font-size: 1.25rem;
-    color: var(--color-secondary-light);
-    line-height: 1.5;
-}
-
-/* 2. PRODUCT STORE & VERTICAL STACK */
-#products-store {
-    padding-top: 2rem;
-    text-align: center;
-}
-
-.category-title {
-    font-size: 2.5rem;
-    font-weight: 700;
-    margin-top: 3rem;
-    margin-bottom: 0.5rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    padding-bottom: 10px;
-    border-bottom: 3px solid var(--color-secondary-light);
-    display: inline-block;
-}
-
-.category-description {
-    font-size: 1.1rem;
-    color: var(--color-primary-dark);
-    margin-bottom: 2rem;
-}
-
-/* WOWING Category Styling */
-.premium-star { color: var(--color-primary-dark); border-color: gold; }
-.standard-star { color: var(--color-primary-dark); border-color: silver; }
-.tools-kit { color: var(--color-primary-dark); border-color: var(--color-accent-cream); }
-.relate-discover { color: var(--color-primary-dark); border-color: var(--color-secondary-light); }
-
-
-/* PRODUCT GRID (Vertical Alignment) */
-.product-grid {
-    display: flex;
-    flex-wrap: wrap; /* Allows cards to wrap on smaller screens */
-    justify-content: center;
-    gap: 20px; /* Spacing between cards */
-    padding: 0 10px;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.product-card {
-    /* Define a flexible width that ensures 'just the right size' */
-    width: 100%; /* Default vertical stack on small screens */
-    max-width: 350px; /* Prevent cards from getting too wide on large screens */
-    
-    background-color: var(--color-text-light);
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    text-align: left;
-    display: flex;
-    flex-direction: column; /* Vertical alignment */
-}
-
-.product-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-}
-
-.product-image {
-    width: 100%;
-    height: 200px; /* Fixed height for image consistency */
-    object-fit: cover;
-}
-
-.product-details {
-    padding: 15px;
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-}
-
-.product-name {
-    font-size: 1.2rem;
-    color: var(--color-primary-dark);
-    margin-bottom: 5px;
-}
-
-.product-desc {
-    font-size: 0.9rem;
-    color: #666;
-    margin-bottom: 15px;
-    flex-grow: 1; /* Pushes the button to the bottom */
-}
-
-/* COMING SOON BUTTON */
-.coming-soon-btn {
-    width: 100%;
-    padding: 10px 0;
-    background-color: var(--color-secondary-light);
-    color: var(--color-primary-dark);
-    border: none;
-    border-radius: 5px;
-    font-weight: bold;
-    cursor: default; /* Not clickable */
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    transition: background-color 0.3s;
-}
-
-
-/* --- Responsiveness (Zero Error Goal) --- */
-
-@media (min-width: 550px) {
-    /* Two columns on tablets/mid-screens, slightly wider cards */
-    .product-card {
-        width: calc(50% - 10px);
-        max-width: 300px; 
-    }
-}
-
-@media (min-width: 850px) {
-    /* Three columns on desktop */
-    .product-card {
-        width: calc(33.333% - 14px);
-        max-width: 350px; 
-    }
-}
-
-@media (min-width: 1200px) {
-     /* Four columns on large desktop */
-    .product-card {
-        width: calc(25% - 15px);
-        max-width: 250px; 
-    }
-}
-
-@media (max-width: 480px) {
-    /* Extra adjustments for very small mobiles */
-    .welcome-title {
-        font-size: 2rem;
-    }
-    .welcome-subtitle {
-        font-size: 1rem;
-    }
-    .category-title {
-        font-size: 1.8rem;
-    }
-    /* Ensure cards are centered and full width on tiny screens */
-    .product-card {
-        width: 90%; 
-        margin: 0 auto;
-    }
-}
-
-
 
 /* --- NEW STYLES FOR REVIEWS DROPDOWN SUBMENU --- */
 
@@ -2324,9 +2110,10 @@ body {
         justify-content: space-between; /* Spread the text and chevron */
     }
     }
+
 /* --- NEW CREATIONS HUB STYLES (creations-hub.html) --- */
 
-/* 1. HEADER & ZOOM ANIMATION (FIXED) */
+/* 1. HEADER & ZOOM ANIMATION (FIXED SPEED & COLOR) */
 .creations-header {
     position: relative;
     height: 70vh; /* Professional, large height */
@@ -2347,13 +2134,13 @@ body {
     background-size: cover;
     background-position: center;
     
-    /* Smooth Zoom Animation Definition (15s for slow scale) */
-    animation: scaleZoom 15s infinite alternate ease-in-out;
+    /* FIX: Set animation speed to 8 seconds */
+    animation: scaleZoom 8s infinite alternate ease-in-out; 
 }
 
 @keyframes scaleZoom {
     0% { transform: scale(1); }
-    100% { transform: scale(1.05); } /* Reduced zoom for smooth feel */
+    100% { transform: scale(1.05); } 
 }
 
 .header-overlay {
@@ -2381,22 +2168,23 @@ body {
     color: var(--color-accent-cream);
     margin-bottom: 1rem;
     line-height: 1.2;
-    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Enhance readability */
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5); 
 }
 
 .welcome-subtitle {
     font-size: 1.35rem;
-    color: var(--color-secondary-light);
     line-height: 1.5;
+    /* FIX: High-contrast color for readability */
+    color: var(--color-accent-cream); 
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
 }
 
-/* 2. PRODUCT STORE & VERTICAL STACK (FIXED LAYOUT) */
+/* 2. PRODUCT STORE & VERTICAL STACK (FIXED LAYOUT & SIZING) */
 #products-store {
-    padding: 0 5vw 4rem; /* Adjusted padding */
+    padding: 0 5vw 4rem; 
     text-align: center;
 }
 
-/* Stunning Category Titles */
 .category-title {
     font-size: 2rem;
     font-weight: 700;
@@ -2405,7 +2193,7 @@ body {
     color: var(--color-primary-dark);
     text-transform: uppercase;
     letter-spacing: 2px;
-    display: block; /* Takes up full width */
+    display: block; 
     text-align: center;
 }
 
@@ -2421,14 +2209,15 @@ body {
     display: flex;
     flex-direction: column; /* FORCES VERTICAL STACKING */
     align-items: center; /* Centers the vertical stack */
-    gap: 25px; /* Spacing between cards */
-    max-width: 600px; /* Limits the overall width of the vertical stack on large screens */
-    margin: 0 auto; /* Centers the whole container */
+    gap: 30px; /* Increased spacing */
+    /* FIX: Significantly increased max width for visibility on desktop/laptop */
+    max-width: 800px; 
+    margin: 0 auto; 
     padding: 0;
 }
 
 .product-card {
-    width: 100%; /* The key to vertical stacking within the 600px max-width */
+    width: 100%; /* The key to vertical stacking within the 800px max-width */
     background-color: var(--color-text-light);
     border: 1px solid var(--color-accent-cream);
     border-radius: 10px;
@@ -2438,7 +2227,8 @@ body {
     text-align: left;
     display: flex;
     flex-direction: row; /* Horizontal layout inside the card (Image | Details) */
-    min-height: 150px;
+    /* FIX: Increased minimum height for larger card feel */
+    min-height: 180px; 
 }
 
 .product-card:hover {
@@ -2447,14 +2237,15 @@ body {
 }
 
 .product-image {
-    width: 150px; /* Fixed width for the image */
-    height: 150px;
+    /* FIX: Increased image size */
+    width: 180px; 
+    height: 180px;
     object-fit: cover;
-    flex-shrink: 0; /* Ensures image doesn't shrink */
+    flex-shrink: 0; 
 }
 
 .product-details {
-    padding: 15px;
+    padding: 15px 20px;
     flex-grow: 1;
     display: flex;
     flex-direction: column;
@@ -2462,22 +2253,22 @@ body {
 }
 
 .product-name {
-    font-size: 1.2rem;
+    font-size: 1.35rem; 
     color: var(--color-primary-dark);
     margin-bottom: 5px;
 }
 
 .product-desc {
-    font-size: 0.95rem;
+    font-size: 1.0rem; 
     color: #666;
     line-height: 1.4;
     margin-bottom: 10px;
 }
 
-/* COMING SOON BUTTON (FIXED TEXT AND STYLE) */
+/* COMING SOON BUTTON */
 .coming-soon-btn {
     width: 100%;
-    padding: 10px 0;
+    padding: 12px 0; /* Taller button */
     background-color: var(--color-secondary-light);
     color: var(--color-primary-dark);
     border: none;
@@ -2487,29 +2278,47 @@ body {
     text-transform: uppercase;
     letter-spacing: 1px;
     transition: background-color 0.3s;
-    font-size: 0.9rem;
+    font-size: 1rem;
 }
 
 
 /* --- Responsiveness (Zero Error Goal) --- */
 
-@media (max-width: 650px) {
+@media (max-width: 850px) {
     /* Reduce the max width of the overall stack slightly for mid-screens */
     .product-grid {
         max-width: 90%; 
     }
+}
+
+@media (max-width: 650px) {
+     /* Adjustments for mid-sized screens (e.g., tablet landscape) */
     .welcome-title {
         font-size: 2.5rem;
     }
     .welcome-subtitle {
         font-size: 1.1rem;
     }
+    /* FIX: Ensure cards still look good on tablets */
+    .product-image {
+        width: 150px; 
+        height: 150px;
+    }
+    .product-card {
+        min-height: 150px;
+    }
+    .product-name {
+        font-size: 1.2rem;
+    }
+    .product-desc {
+        font-size: 0.95rem;
+    }
 }
 
 @media (max-width: 480px) {
-    /* Single-column, full-width card layout for mobile */
+    /* Single-column, full-width card layout for mobile (portrait) */
     .product-card {
-        flex-direction: column; /* Stack image and text vertically on small screens */
+        flex-direction: column; /* Stack image and text vertically */
         min-height: unset;
         width: 100%; 
     }

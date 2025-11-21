@@ -2031,296 +2031,248 @@ body {
     }
 }
 
-/* --- NEW STYLES FOR CREATIONS-HUB.HTML (MERGED & FINAL LAYOUT) --- */
+/* --- NEW CONTENT STYLES: CREATIONS HUB (creations-hub.html) --- */
+/* Ensure #page-content padding doesn't interfere with the full-width header */
+.creations-store-container {
+    padding: var(--spacing-lg) 5vw;
+}
 
-/* --- Header Styles (Applying colors via variables) --- */
-.header-container.creations-hub-hero {
+/* ----------------------------------------------------- */
+/* 2A. CREATIONS HUB HEADER (Zoom-Scaling Animation)     */
+/* ----------------------------------------------------- */
+
+/* Keyframe for the subtle, continuous scaling animation */
+@keyframes subtleZoom {
+    0% { transform: scale(1.0); }
+    50% { transform: scale(1.02); }
+    100% { transform: scale(1.0); }
+}
+
+.creations-header-container {
+    /* Ensures the header spans full width outside of page-content padding */
+    width: 100%;
+    margin: 0 auto;
+}
+
+#creations-hub-header {
+    height: 350px; /* Standard professional height */
     position: relative;
-    background-color: var(--color-primary-dark);
-    color: var(--color-accent-cream);
-    padding: 40px 20px;
-    text-align: center;
     overflow: hidden;
-    border-bottom: 5px solid var(--color-secondary-light);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
+    text-align: center;
+    padding: 0 5vw;
+    background-color: var(--color-primary-dark);
 }
 
-.header-image {
-    max-width: 100%;
-    height: auto;
-    max-height: 200px; 
-    margin-bottom: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    z-index: 2;
-}
-
-.header-container h1 {
-    margin: 0;
-    font-size: 2.8em;
-    letter-spacing: 1px;
-    position: relative;
-    z-index: 2;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-    font-family: 'Playfair Display', serif;
-}
-.header-tagline {
-    font-size: 1.1rem;
-    font-weight: 300;
-    position: relative;
-    z-index: 2;
-    margin-top: 10px;
-    color: var(--color-accent-cream);
-}
-
-/* Bubble Animation (Specific to Creations Hub) */
-.header-container.creations-hub-hero .bubbles {
+#creations-hub-header::before {
+    content: '';
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    pointer-events: none;
+    /* Background Image setup */
+    background-image: url('https://i.ibb.co/Dfm8KX4G/Picsart-25-07-26-14-05-42-460.jpg');
+    background-size: cover;
+    background-position: center;
+    
+    /* Reduced Opacity (as requested) */
+    opacity: 0.4;
+    
+    /* Apply the smooth zoom animation */
+    animation: subtleZoom 20s ease-in-out infinite; /* 20s = slow, subtle speed */
     z-index: 1;
-    overflow: hidden;
 }
 
-.header-container.creations-hub-hero .bubbles div {
-    position: absolute;
-    display: block;
-    list-style: none;
-    width: 20px;
-    height: 20px;
-    background: rgba(255, 255, 255, 0.15);
-    animation: hubBubbleUp 25s linear infinite; 
-    bottom: -150px;
-    border-radius: 50%;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
-}
-
-/* Bubble specific timing definitions */
-.header-container.creations-hub-hero .bubbles div:nth-child(1) { left: 10%; width: 80px; height: 80px; animation-delay: 0s; animation-duration: 10s; }
-.header-container.creations-hub-hero .bubbles div:nth-child(2) { left: 20%; width: 30px; height: 30px; animation-delay: 2s; animation-duration: 12s; }
-.header-container.creations-hub-hero .bubbles div:nth-child(3) { left: 25%; width: 60px; height: 60px; animation-delay: 4s; animation-duration: 15s; }
-.header-container.creations-hub-hero .bubbles div:nth-child(4) { left: 40%; width: 50px; height: 50px; animation-delay: 0s; animation-duration: 18s; }
-.header-container.creations-hub-hero .bubbles div:nth-child(5) { left: 70%; width: 70px; height: 70px; animation-delay: 3s; animation-duration: 13s; }
-.header-container.creations-hub-hero .bubbles div:nth-child(6) { left: 80%; width: 40px; height: 40px; animation-delay: 6s; animation-duration: 10s; }
-.header-container.creations-hub-hero .bubbles div:nth-child(7) { left: 5%; width: 90px; height: 90px; animation-delay: 7s; animation-duration: 20s; }
-.header-container.creations-hub-hero .bubbles div:nth-child(8) { left: 90%; width: 25px; height: 25px; animation-delay: 5s; animation-duration: 11s; }
-
-/* Keyframes (Kept separate to avoid conflicts) */
-@keyframes hubBubbleUp {
-    0% { transform: translateY(0) scale(0.8); opacity: 0.7; }
-    100% { transform: translateY(-100vh) scale(1.2); opacity: 0; }
-}
-/* --- END Header Styles --- */
-
-
-/* --- Main Content Area Wrapper & Sections --- */
-.main-content-wrapper {
-    flex-grow: 1; 
-    display: flex;
-    flex-direction: column;
-    align-items: center; 
-    padding-bottom: 60px; 
-}
-
-.intro-section {
-    padding: 60px 20px 40px; 
-    text-align: center;
-    max-width: 1000px;
-    margin: 0 auto;
-}
-
-.food-image {
-    max-width: 100%;
-    height: auto;
-    border-radius: 10px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-    margin-bottom: 30px;
-    object-fit: cover;
-    width: clamp(300px, 80vw, 800px);
-    aspect-ratio: 16 / 9;
-    min-height: 250px; 
-}
-
-.bio-text {
+.header-content {
+    position: relative;
+    z-index: 2;
+    color: var(--color-accent-cream); /* Light text on dark/image background */
     max-width: 800px;
-    margin: 0 auto 20px;
-    font-size: 1.8em;
-    font-weight: 600;
-    color: var(--color-primary-dark); 
-    line-height: 1.4;
-    letter-spacing: 0.5px;
-    font-family: 'Playfair Display', serif;
+}
+
+.welcome-title {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    color: var(--color-secondary-light); /* Highlight with mid-tone tan */
+}
+
+.welcome-message {
+    font-size: 1.2rem;
+    line-height: 1.5;
+}
+
+/* Responsive adjustments for header */
+@media (max-width: 768px) {
+    #creations-hub-header {
+        height: 300px;
+    }
+    .welcome-title {
+        font-size: 2.5rem;
+    }
+    .welcome-message {
+        font-size: 1rem;
+    }
 }
 
 
-/* --- HORIZONTAL CAROUSEL (FINAL FIXES) --- */
+/* ----------------------------------------------------- */
+/* 2B. PRODUCT CATEGORIES & CARDS (Vertical Alignment)   */
+/* ----------------------------------------------------- */
 
-.recipe-categories-wrapper {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding-bottom: 5rem;
+.product-category {
+    margin: 4rem 0;
+    border-bottom: 2px solid var(--color-accent-cream);
+    padding-bottom: 2rem;
 }
 
-.recipe-carousel-section {
-    padding: 2rem 0;
-    margin-bottom: 2rem;
-    position: relative; 
-}
-
-/* Section Demarcation (Divider) */
-.recipe-carousel-section:not(:last-child)::after {
-    content: '';
-    display: block;
-    width: 80%;
-    height: 1px;
-    background: var(--color-secondary-light);
-    margin: 4rem auto 0;
-    opacity: 0.3;
-}
-
-/* Heading Size and Alignment Fixes */
-.section-title-hub {
-    font-family: 'Playfair Display', serif;
+.category-heading {
+    /* Beautiful and Wowing Heading Style */
     font-size: 2.2rem;
     color: var(--color-primary-dark);
-    /* Correct alignment on desktop/mobile */
-    margin: 0 0 1.5rem 20px;
-    text-align: left;
-    padding-left: 20px; 
+    text-align: center;
+    margin-bottom: 3rem;
+    padding: 0 20px;
+    position: relative;
+    
+}
+.category-heading::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 4px;
+    background: var(--color-secondary-light);
+    margin: 15px auto 0;
+    border-radius: 2px;
 }
 
-/* CRITICAL: Horizontal Scroll Container */
-.horizontal-scroll-container {
+/* Forces vertical alignment of cards within a category */
+.product-card-list {
     display: flex;
-    overflow-x: scroll;
-    padding: 10px 20px;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    gap: 30px;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 600px; /* Controls card width on large screens */
+    margin: 0 auto; /* Centers the vertical stack of cards */
 }
-
-/* Hide scrollbar */
-.horizontal-scroll-container::-webkit-scrollbar { display: none; }
-.horizontal-scroll-container { -ms-overflow-style: none; scrollbar-width: none; }
-
-
-/* --- PRODUCT CARD STYLING (HEIGHT FIX APPLIED) --- */
 
 .product-card {
-    flex-shrink: 0;
-    /* Card width is now responsive on mobile */
-    width: 300px; 
-    scroll-snap-align: start; 
-    
-    background-color: white;
-    border-radius: 12px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border: 2px solid var(--color-secondary-light);
     display: flex;
-    flex-direction: column;
-}
-
-.product-card-image {
-    width: 100%;
-    height: 180px; 
+    flex-direction: row; /* Horizontal layout inside the card for professionalism */
+    align-items: center;
+    background-color: var(--color-text-light);
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
     overflow: hidden;
-    /* FIX: Ensure the container is ready for the image */
-    display: block; 
+    transition: box-shadow 0.3s ease;
+    width: 100%; /* Ensures card fills the max-width of the list container */
 }
 
-.product-card-image img {
-    /* FIX: Use fixed dimensions to force reliable display */
+.product-card:hover {
+    box-shadow: 0 8px 20px rgba(107, 66, 38, 0.15); /* Subtle shadow on hover */
+}
+
+/* Image Styling */
+.product-image-container {
+    position: relative;
+    width: 150px; /* Fixed width for the image part */
+    height: 150px;
+    flex-shrink: 0; /* Prevents image from shrinking */
+}
+
+.product-image {
     width: 100%;
-    height: 180px; 
+    height: 100%;
     object-fit: cover;
-    transition: transform 0.5s ease;
+    display: block;
 }
 
-.product-card-content {
-    /* Reduced padding */
+.coming-soon-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(107, 66, 38, 0.85); /* Primary dark with opacity */
+    color: var(--color-accent-cream);
+    font-weight: bold;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    pointer-events: none; /* Allows clicks to go through if needed, but not necessary here */
+}
+
+/* Details and Button Styling */
+.product-details {
     padding: 15px 20px;
-    flex-grow: 1;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    flex-grow: 1; /* Allows details to fill remaining space */
 }
 
-.product-card h3 {
-    font-size: 1.6em; /* Slightly reduced font size */
-    margin-bottom: 10px;
-    font-family: 'Playfair Display', serif;
+.product-name {
+    font-size: 1.15rem;
+    color: var(--color-primary-dark);
+    margin-bottom: 5px;
 }
 
-.product-card p {
-    font-size: 1em; 
-    margin-bottom: 15px; /* Reduced vertical spacing */
-    flex-grow: 1;
-    font-family: 'Poppins', sans-serif;
+.product-desc {
+    font-size: 0.9rem;
+    color: var(--color-text-dark);
+    margin-bottom: 15px;
 }
 
-.coming-soon-button {
-    /* Padding is good, no change */
-}
-
-/* 2. Carousel Indicator (Dots) Styling */
-.carousel-indicator {
-    display: flex;
-    justify-content: center;
-    gap: 8px;
-    margin-top: 1.5rem;
-}
-
-.indicator-dot {
-    height: 10px;
-    width: 10px;
-    background-color: rgba(107, 66, 38, 0.2); 
-    border-radius: 50%;
-    display: inline-block;
-    transition: background-color 0.3s, transform 0.2s;
-}
-
-.indicator-dot.active {
+.coming-soon-btn {
+    align-self: flex-start; /* Aligns button to the left */
+    padding: 8px 15px;
     background-color: var(--color-secondary-light);
-    transform: scale(1.2);
+    color: var(--color-primary-dark);
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-/* --- FINAL RESPONSIVE ADJUSTMENTS --- */
-@media (max-width: 768px) {
-    .header-container h1 {
-        font-size: 2em;
-    }
-    .bio-text {
-        font-size: 1.4em;
-    }
-    /* Heading Alignment Fix for Mobile/Tablet */
-    .section-title-hub {
-        font-size: 1.8rem; 
-        padding-left: 0;
-        margin-left: 15px; /* Adjust left margin for small screens */
-    }
+.coming-soon-btn:hover {
+    background-color: var(--color-primary-dark);
+    color: var(--color-accent-cream);
+}
+
+/* --- CRITICAL RESPONSIVENESS FIXES (ZERO ERRORS) --- */
+
+@media (max-width: 600px) {
+    /* Force cards to stack vertically on mobile screens (better readability) */
     .product-card {
-        width: 250px; /* Smallest comfortable card size */
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .product-image-container {
+        width: 100%; /* Image takes full width at the top */
+        height: 200px;
+    }
+    
+    .product-details {
+        align-items: center;
+        text-align: center;
+    }
+    
+    .coming-soon-btn {
+        align-self: center; /* Center button when card is vertical */
+        width: 80%;
     }
 }
-@media (max-width: 480px) {
-    .product-card {
-        width: 220px; /* Narrower cards on very small screens */
-    }
-    .header-container h1 {
-        font-size: 1.6em;
+
+@media (max-width: 400px) {
+    .product-image-container {
+        height: 150px; /* Reduced height on smaller mobiles */
     }
 }
+
 
 /* --- NEW STYLES FOR REVIEWS DROPDOWN SUBMENU --- */
 

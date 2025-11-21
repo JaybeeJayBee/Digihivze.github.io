@@ -2031,247 +2031,219 @@ body {
     }
 }
 
-/* --- NEW CONTENT STYLES: CREATIONS HUB (creations-hub.html) --- */
-/* Ensure #page-content padding doesn't interfere with the full-width header */
-.creations-store-container {
-    padding: var(--spacing-lg) 5vw;
-}
+/* --- NEW CREATIONS HUB STYLES (creations-hub.html) --- */
 
-/* ----------------------------------------------------- */
-/* 2A. CREATIONS HUB HEADER (Zoom-Scaling Animation)     */
-/* ----------------------------------------------------- */
-
-/* Keyframe for the subtle, continuous scaling animation */
-@keyframes subtleZoom {
-    0% { transform: scale(1.0); }
-    50% { transform: scale(1.02); }
-    100% { transform: scale(1.0); }
-}
-
-.creations-header-container {
-    /* Ensures the header spans full width outside of page-content padding */
-    width: 100%;
-    margin: 0 auto;
-}
-
-#creations-hub-header {
-    height: 350px; /* Standard professional height */
+/* 1. HEADER & ZOOM ANIMATION */
+.creations-header {
     position: relative;
+    height: 65vh; /* Large, professional height */
     overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 0 5vw;
-    background-color: var(--color-primary-dark);
+    margin-bottom: var(--spacing-lg); /* Space above the product grid */
 }
 
-#creations-hub-header::before {
-    content: '';
+.header-background {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    /* Background Image setup */
-    background-image: url('https://i.ibb.co/Dfm8KX4G/Picsart-25-07-26-14-05-42-460.jpg');
     background-size: cover;
     background-position: center;
     
-    /* Reduced Opacity (as requested) */
-    opacity: 0.4;
-    
-    /* Apply the smooth zoom animation */
-    animation: subtleZoom 20s ease-in-out infinite; /* 20s = slow, subtle speed */
-    z-index: 1;
+    /* Smooth Zoom Animation Definition */
+    animation: scaleZoom 15s infinite alternate ease-in-out;
 }
 
-.header-content {
-    position: relative;
-    z-index: 2;
-    color: var(--color-accent-cream); /* Light text on dark/image background */
+@keyframes scaleZoom {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.1); }
+}
+
+.header-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Dark overlay for text readability, using primary brown */
+    background-color: rgba(107, 66, 38, 0.65); 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+
+.welcome-text-container {
     max-width: 800px;
+    padding: 20px;
+    color: var(--color-text-light);
 }
 
 .welcome-title {
-    font-size: 3.5rem;
+    font-size: 3rem;
+    color: var(--color-accent-cream);
     margin-bottom: 1rem;
-    color: var(--color-secondary-light); /* Highlight with mid-tone tan */
+    line-height: 1.2;
 }
 
-.welcome-message {
-    font-size: 1.2rem;
+.welcome-subtitle {
+    font-size: 1.25rem;
+    color: var(--color-secondary-light);
     line-height: 1.5;
 }
 
-/* Responsive adjustments for header */
-@media (max-width: 768px) {
-    #creations-hub-header {
-        height: 300px;
-    }
-    .welcome-title {
-        font-size: 2.5rem;
-    }
-    .welcome-message {
-        font-size: 1rem;
-    }
-}
-
-
-/* ----------------------------------------------------- */
-/* 2B. PRODUCT CATEGORIES & CARDS (Vertical Alignment)   */
-/* ----------------------------------------------------- */
-
-.product-category {
-    margin: 4rem 0;
-    border-bottom: 2px solid var(--color-accent-cream);
-    padding-bottom: 2rem;
-}
-
-.category-heading {
-    /* Beautiful and Wowing Heading Style */
-    font-size: 2.2rem;
-    color: var(--color-primary-dark);
+/* 2. PRODUCT STORE & VERTICAL STACK */
+#products-store {
+    padding-top: 2rem;
     text-align: center;
-    margin-bottom: 3rem;
-    padding: 0 20px;
-    position: relative;
-    
-}
-.category-heading::after {
-    content: '';
-    display: block;
-    width: 80px;
-    height: 4px;
-    background: var(--color-secondary-light);
-    margin: 15px auto 0;
-    border-radius: 2px;
 }
 
-/* Forces vertical alignment of cards within a category */
-.product-card-list {
+.category-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-top: 3rem;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding-bottom: 10px;
+    border-bottom: 3px solid var(--color-secondary-light);
+    display: inline-block;
+}
+
+.category-description {
+    font-size: 1.1rem;
+    color: var(--color-primary-dark);
+    margin-bottom: 2rem;
+}
+
+/* WOWING Category Styling */
+.premium-star { color: var(--color-primary-dark); border-color: gold; }
+.standard-star { color: var(--color-primary-dark); border-color: silver; }
+.tools-kit { color: var(--color-primary-dark); border-color: var(--color-accent-cream); }
+.relate-discover { color: var(--color-primary-dark); border-color: var(--color-secondary-light); }
+
+
+/* PRODUCT GRID (Vertical Alignment) */
+.product-grid {
     display: flex;
-    flex-direction: column;
-    gap: 20px;
-    max-width: 600px; /* Controls card width on large screens */
-    margin: 0 auto; /* Centers the vertical stack of cards */
+    flex-wrap: wrap; /* Allows cards to wrap on smaller screens */
+    justify-content: center;
+    gap: 20px; /* Spacing between cards */
+    padding: 0 10px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .product-card {
-    display: flex;
-    flex-direction: row; /* Horizontal layout inside the card for professionalism */
-    align-items: center;
+    /* Define a flexible width that ensures 'just the right size' */
+    width: 100%; /* Default vertical stack on small screens */
+    max-width: 350px; /* Prevent cards from getting too wide on large screens */
+    
     background-color: var(--color-text-light);
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     overflow: hidden;
-    transition: box-shadow 0.3s ease;
-    width: 100%; /* Ensures card fills the max-width of the list container */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: left;
+    display: flex;
+    flex-direction: column; /* Vertical alignment */
 }
 
 .product-card:hover {
-    box-shadow: 0 8px 20px rgba(107, 66, 38, 0.15); /* Subtle shadow on hover */
-}
-
-/* Image Styling */
-.product-image-container {
-    position: relative;
-    width: 150px; /* Fixed width for the image part */
-    height: 150px;
-    flex-shrink: 0; /* Prevents image from shrinking */
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
 }
 
 .product-image {
     width: 100%;
-    height: 100%;
+    height: 200px; /* Fixed height for image consistency */
     object-fit: cover;
-    display: block;
 }
 
-.coming-soon-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(107, 66, 38, 0.85); /* Primary dark with opacity */
-    color: var(--color-accent-cream);
-    font-weight: bold;
-    font-size: 1.1rem;
-    letter-spacing: 1px;
-    pointer-events: none; /* Allows clicks to go through if needed, but not necessary here */
-}
-
-/* Details and Button Styling */
 .product-details {
-    padding: 15px 20px;
+    padding: 15px;
+    flex-grow: 1;
     display: flex;
     flex-direction: column;
-    flex-grow: 1; /* Allows details to fill remaining space */
 }
 
 .product-name {
-    font-size: 1.15rem;
+    font-size: 1.2rem;
     color: var(--color-primary-dark);
     margin-bottom: 5px;
 }
 
 .product-desc {
     font-size: 0.9rem;
-    color: var(--color-text-dark);
+    color: #666;
     margin-bottom: 15px;
+    flex-grow: 1; /* Pushes the button to the bottom */
 }
 
+/* COMING SOON BUTTON */
 .coming-soon-btn {
-    align-self: flex-start; /* Aligns button to the left */
-    padding: 8px 15px;
+    width: 100%;
+    padding: 10px 0;
     background-color: var(--color-secondary-light);
     color: var(--color-primary-dark);
     border: none;
     border-radius: 5px;
     font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+    cursor: default; /* Not clickable */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: background-color 0.3s;
 }
 
-.coming-soon-btn:hover {
-    background-color: var(--color-primary-dark);
-    color: var(--color-accent-cream);
-}
 
-/* --- CRITICAL RESPONSIVENESS FIXES (ZERO ERRORS) --- */
+/* --- Responsiveness (Zero Error Goal) --- */
 
-@media (max-width: 600px) {
-    /* Force cards to stack vertically on mobile screens (better readability) */
+@media (min-width: 550px) {
+    /* Two columns on tablets/mid-screens, slightly wider cards */
     .product-card {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .product-image-container {
-        width: 100%; /* Image takes full width at the top */
-        height: 200px;
-    }
-    
-    .product-details {
-        align-items: center;
-        text-align: center;
-    }
-    
-    .coming-soon-btn {
-        align-self: center; /* Center button when card is vertical */
-        width: 80%;
+        width: calc(50% - 10px);
+        max-width: 300px; 
     }
 }
 
-@media (max-width: 400px) {
-    .product-image-container {
-        height: 150px; /* Reduced height on smaller mobiles */
+@media (min-width: 850px) {
+    /* Three columns on desktop */
+    .product-card {
+        width: calc(33.333% - 14px);
+        max-width: 350px; 
     }
 }
+
+@media (min-width: 1200px) {
+     /* Four columns on large desktop */
+    .product-card {
+        width: calc(25% - 15px);
+        max-width: 250px; 
+    }
+}
+
+@media (max-width: 480px) {
+    /* Extra adjustments for very small mobiles */
+    .welcome-title {
+        font-size: 2rem;
+    }
+    .welcome-subtitle {
+        font-size: 1rem;
+    }
+    .category-title {
+        font-size: 1.8rem;
+    }
+    /* Ensure cards are centered and full width on tiny screens */
+    .product-card {
+        width: 90%; 
+        margin: 0 auto;
+    }
+}
+
 
 
 /* --- NEW STYLES FOR REVIEWS DROPDOWN SUBMENU --- */

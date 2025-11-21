@@ -5,8 +5,6 @@
     { "source": "/creations-hub", "destination": "/creations-hub.html" },
     { "source": "/faq", "destination": "/faq.html" },
     { "source": "/policies", "destination": "/policies.html" },
-    
-    /* CATCH-ALL: This handles other clean URLs like /index and ensures future pages work */
     { "source": "/:path", "destination": "/:path.html" }
   ]
 }
